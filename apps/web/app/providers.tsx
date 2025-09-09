@@ -1,11 +1,15 @@
 "use client";
 
 import React from "react";
-import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "./components/providers/ThemeProvider";
+import { FontProvider } from "./components/providers/FontProvider";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
-        // wrapping all the pages with the providers
-        <SessionProvider>{children}</SessionProvider>
+        <ThemeProvider>
+            <FontProvider>
+                {children}
+            </FontProvider>
+        </ThemeProvider>
     );
 };

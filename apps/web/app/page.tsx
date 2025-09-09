@@ -1,15 +1,23 @@
+import { Hero } from "./components/sections/Hero";
+import { About } from "./components/sections/About";
+import { Experience } from "./components/sections/Experience";
+import { Projects } from "./components/sections/Projects";
+import { Publications } from "./components/sections/Publications";
+import { Contact } from "./components/sections/Contact";
+import { Navigation } from "./components/Navigation";
+import { ScrollToTop } from "./components/ui/ScrollToTop";
 
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { authOptions } from "./lib/auth";
-
-export default async function Page() {
-    const session = await getServerSession(authOptions);
-
-    if (session?.user) {
-        redirect("/dashboard");
-    }
-    else {
-        redirect("/api/auth/signin");
-    }
+export default function HomePage() {
+  return (
+    <main className="min-h-screen">
+      <Navigation />
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Publications />
+      <Contact />
+      <ScrollToTop />
+    </main>
+  );
 }
