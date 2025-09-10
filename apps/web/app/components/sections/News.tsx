@@ -11,12 +11,19 @@ type NewsItem = {
 };
 
 export async function News() {
-  const rawItems: NewsItem[] = await prisma.news.findMany({
-    where: { published: true },
-    orderBy: { date: "desc" },
-    take: 3,
-    select: { id: true, slug: true, title: true, excerpt: true, date: true },
-  });
+  let rawItems: NewsItem[] = [];
+  
+  try {
+    rawItems = await prisma.news.findMany({
+      where: { published: true },
+      orderBy: { date: "desc" },
+      take: 3,
+      select: { id: true, slug: true, title: true, excerpt: true, date: true },
+    });
+  } catch (error) {
+    console.warn("Database connection failed during build, using empty news array:", error);
+    rawItems = [];
+  }
 
   // Process markdown for titles and excerpts
   const items = await Promise.all(

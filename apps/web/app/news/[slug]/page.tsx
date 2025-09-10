@@ -30,21 +30,27 @@ export default async function NewsDetailPage({ params }: PageProps) {
   const { slug } = await params;
 
   // Fetch the current article
-  const article: NewsArticle | null = await prisma.news.findFirst({
-    where: { 
-      slug: slug,
-      published: true 
-    },
-    select: {
-      id: true,
-      slug: true,
-      title: true,
-      content: true,
-      excerpt: true,
-      date: true,
-      featured: true,
-    },
-  });
+  let article: NewsArticle | null = null;
+  
+  try {
+    article = await prisma.news.findFirst({
+      where: { 
+        slug: slug,
+        published: true 
+      },
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        content: true,
+        excerpt: true,
+        date: true,
+        featured: true,
+      },
+    });
+  } catch (error) {
+    console.warn("Database connection failed during build:", error);
+  }
 
   if (!article) {
     notFound();
@@ -56,20 +62,27 @@ export default async function NewsDetailPage({ params }: PageProps) {
   const excerptHtml = article.excerpt ? await markdownToHtml(article.excerpt) : null;
 
   // Fetch related/previous news (excluding current article)
-  const relatedNews: RelatedNews[] = await prisma.news.findMany({
-    where: { 
-      published: true,
-      id: { not: article.id }
-    },
-    orderBy: { date: "desc" },
-    take: 5,
-    select: {
-      id: true,
-      slug: true,
-      title: true,
-      date: true,
-    },
-  });
+  let relatedNews: RelatedNews[] = [];
+  
+  try {
+    relatedNews = await prisma.news.findMany({
+      where: { 
+        published: true,
+        id: { not: article.id }
+      },
+      orderBy: { date: "desc" },
+      take: 5,
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        date: true,
+      },
+    });
+  } catch (error) {
+    console.warn("Database connection failed during build, using empty related news:", error);
+    relatedNews = [];
+  }
 
   return (
     <main className="min-h-screen pt-20 pb-16">
