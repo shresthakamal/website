@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { seedNews } from '../scripts/seed-news.js';
 
 const prisma = new PrismaClient();
 
@@ -193,7 +194,11 @@ async function main() {
         console.log(`✓ Created/updated experience: ${experience.title} at ${experience.company}`);
     }
 
-    console.log('Database seeding completed!');
+    // Seed news items
+    console.log('\n🗞️  Seeding news...');
+    await seedNews();
+
+    console.log('\n✅ Database seeding completed!');
     console.log(`Created ${users.length} users`);
     console.log(`Created ${experiences.length} experiences`);
 }
