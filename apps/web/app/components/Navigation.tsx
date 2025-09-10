@@ -2,13 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useTheme } from "./providers/ThemeProvider";
-import { useFont } from "./providers/FontProvider";
 
 export function Navigation() {
   const { theme, toggleTheme, mounted: themeMounted } = useTheme();
-  const { font, setFont, mounted: fontMounted } = useFont();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showFontMenu, setShowFontMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
@@ -20,12 +17,6 @@ export function Navigation() {
     { href: "#contact", label: "Contact" },
   ];
 
-  const fontOptions = [
-    { value: "inter" as const, label: "Inter" },
-    { value: "system" as const, label: "System" },
-    { value: "serif" as const, label: "Serif" },
-    { value: "mono" as const, label: "Mono" },
-  ];
 
   // Track active section based on scroll position
   useEffect(() => {
@@ -59,8 +50,8 @@ export function Navigation() {
     setIsMenuOpen(false);
   };
 
-  // Don't render until both providers are mounted
-  if (!themeMounted || !fontMounted) {
+  // Don't render until theme provider is mounted
+  if (!themeMounted) {
     return (
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,13 +91,16 @@ export function Navigation() {
                   <button
                     key={item.href}
                     onClick={() => scrollToSection(item.href)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`px-3 py-2 text-sm font-medium transition-colors relative ${
                       isActive 
-                        ? "text-primary bg-primary/10 border border-primary/20" 
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                        ? "text-primary" 
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {item.label}
+                    {isActive && (
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                    )}
                   </button>
                 );
               })}
@@ -115,37 +109,6 @@ export function Navigation() {
 
           {/* Controls */}
           <div className="flex items-center space-x-2">
-            {/* Font Selector */}
-            <div className="relative">
-              <button
-                onClick={() => setShowFontMenu(!showFontMenu)}
-                className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                title="Change Font"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-              {showFontMenu && (
-                <div className="absolute right-0 mt-2 w-32 bg-background border border-border rounded-md shadow-lg">
-                  {fontOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => {
-                        setFont(option.value);
-                        setShowFontMenu(false);
-                      }}
-                      className={`block w-full text-left px-4 py-2 text-sm hover:bg-accent transition-colors ${
-                        font === option.value ? "bg-accent text-accent-foreground" : "text-muted-foreground"
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -190,13 +153,16 @@ export function Navigation() {
                   <button
                     key={item.href}
                     onClick={() => scrollToSection(item.href)}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors relative ${
                       isActive 
-                        ? "text-primary bg-primary/10 border border-primary/20" 
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                        ? "text-primary" 
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {item.label}
+                    {isActive && (
+                      <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full" />
+                    )}
                   </button>
                 );
               })}
