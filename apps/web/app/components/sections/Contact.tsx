@@ -196,9 +196,9 @@ export function Contact() {
         {/* Footer */}
         <div className="mt-20 pt-10 border-t border-border text-center">
           <p className="text-muted-foreground text-lg">
-            © 2024 Kamal Shrestha.
+            © 2024 Kamal Shrestha. All rights reserved.
           </p>
-          <p className="text-base text-muted-foreground mt-4">
+          <p className="text-base text-muted-foreground mt-4 italic">
             "Discipline Equals Freedom" - Living by this motto every day.
           </p>
         </div>
