@@ -10,10 +10,10 @@ export function Hero() {
   }, []);
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-      <div className="max-w-8xl mx-[10%]">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center">
+          {/* Right Column - Profile Image */}
+          <div className="flex justify-center lg:justify-start order-2 lg:order-2">
             <div className="relative">
               <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px] rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-4 border-primary/10 flex items-center justify-center shadow-2xl overflow-hidden">
                 <img 
@@ -28,8 +28,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column - Content */}
-          <div className="text-center lg:text-left space-y-10 order-1 lg:order-2">
+          {/* Left Column - Content */}
+          <div className="text-center lg:text-left space-y-10 order-1 lg:order-1">
             {/* Main heading */}
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
