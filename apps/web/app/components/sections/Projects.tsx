@@ -1,5 +1,20 @@
 "use client";
 
+interface Project {
+  title: string;
+  category: string;
+  period: string;
+  description: string;
+  technologies: string[];
+  supervisor?: string;
+  institution?: string;
+  company?: string;
+  highlights: string[];
+  imageType: string;
+  status?: string;
+  publication?: boolean;
+}
+
 export function Projects() {
   // Function to render project image placeholder
   const renderProjectImage = (projectType: string) => {
@@ -23,7 +38,7 @@ export function Projects() {
     );
   };
 
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Inclusivity in Job Recommendation System",
       category: "Master's Thesis",

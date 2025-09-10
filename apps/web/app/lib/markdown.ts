@@ -95,6 +95,11 @@ function extractExcerpt(content: string): string {
   const plainText = content.replace(/<[^>]*>/g, '').replace(/\n+/g, ' ').trim();
   const firstParagraph = plainText.split('\n')[0];
   
+  // Return empty string if no content
+  if (!firstParagraph) {
+    return '';
+  }
+  
   // Limit to 200 characters
   if (firstParagraph.length > 200) {
     return firstParagraph.substring(0, 200) + '...';

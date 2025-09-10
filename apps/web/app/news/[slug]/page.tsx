@@ -2,6 +2,8 @@ import prisma from "@repo/db/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { markdownToHtml } from "../../lib/markdown";
+import { getNewsComments, getNewsCommentCount } from "../../actions/comments";
+import CommentSection from "../../components/comments/CommentSection";
 
 type NewsArticle = {
   id: number;
@@ -21,9 +23,9 @@ type RelatedNews = {
 };
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function NewsDetailPage({ params }: PageProps) {
@@ -82,6 +84,19 @@ export default async function NewsDetailPage({ params }: PageProps) {
   } catch (error) {
     console.warn("Database connection failed during build, using empty related news:", error);
     relatedNews = [];
+  }
+
+  // Fetch comments for this news article
+  let initialComments: Awaited<ReturnType<typeof getNewsComments>> = [];
+  let initialCommentCount = 0;
+  
+  try {
+    [initialComments, initialCommentCount] = await Promise.all([
+      getNewsComments(article.id),
+      getNewsCommentCount(article.id)
+    ]);
+  } catch (error) {
+    console.warn("Failed to fetch comments:", error);
   }
 
   return (
@@ -192,6 +207,13 @@ export default async function NewsDetailPage({ params }: PageProps) {
             </div>
           </aside>
         )}
+
+        {/* Comments Section */}
+        <CommentSection
+          newsId={article.id}
+          initialComments={initialComments}
+          initialCount={initialCommentCount}
+        />
 
         {/* Navigation */}
         <div className="mt-12 flex justify-between items-center">

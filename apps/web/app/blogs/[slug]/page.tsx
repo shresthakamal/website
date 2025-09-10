@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBlogPostBySlug, getAllBlogPosts, markdownToHtml, BlogPost } from "../../lib/markdown";
+import { getBlogPostBySlug, getAllBlogPosts, markdownToHtml } from "../../lib/markdown";
+import { getBlogComments, getBlogCommentCount } from "../../actions/comments";
+import CommentSection from "../../components/comments/CommentSection";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function BlogDetailPage({ params }: PageProps) {
@@ -25,6 +27,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
   // Fetch related/previous blogs (excluding current article)
   const allBlogs = getAllBlogPosts();
   const relatedBlogs = allBlogs.filter(post => post.slug !== slug).slice(0, 5);
+
+  // Fetch comments for this blog post
+  let initialComments: Awaited<ReturnType<typeof getBlogComments>> = [];
+  let initialCommentCount = 0;
+  
+  try {
+    [initialComments, initialCommentCount] = await Promise.all([
+      getBlogComments(slug),
+      getBlogCommentCount(slug)
+    ]);
+  } catch (error) {
+    console.warn("Failed to fetch comments:", error);
+  }
 
   return (
     <main className="min-h-screen pt-20 pb-16">
@@ -134,6 +149,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </div>
           </aside>
         )}
+
+        {/* Comments Section */}
+        <CommentSection
+          blogSlug={slug}
+          initialComments={initialComments}
+          initialCount={initialCommentCount}
+        />
 
         {/* Navigation */}
         <div className="mt-12 flex justify-between items-center">
