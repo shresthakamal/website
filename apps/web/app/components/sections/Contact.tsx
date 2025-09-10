@@ -3,12 +3,30 @@
 export function Contact() {
   const contactInfo = [
     {
+      label: "Email",
+      value: "kamalandshrestha@gmail.com",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      )
+    },
+    {
       label: "Location",
       value: "Bengaluru, Karnataka, India",
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      )
+    },
+    {
+      label: "Phone",
+      value: "(+91) 7893887563",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       )
     },
@@ -76,33 +94,33 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Get in Touch
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             I'm always interested in discussing AI research, collaboration opportunities, 
             and sharing knowledge about NLP and machine learning
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Column - Contact Info & Interests */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* Contact Information */}
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-6">Contact Information</h3>
-              <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-foreground mb-8">Contact Information</h3>
+              <div className="space-y-6">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start space-x-3">
+                  <div key={index} className="flex items-start space-x-4">
                     <div className="text-primary mt-1">
                       {info.icon}
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">{info.label}</p>
-                      <p className="text-muted-foreground">{info.value}</p>
+                      <p className="font-medium text-foreground text-lg">{info.label}</p>
+                      <p className="text-muted-foreground text-base">{info.value}</p>
                     </div>
                   </div>
                 ))}
@@ -111,55 +129,55 @@ export function Contact() {
 
             {/* Personal Interests */}
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-6">Personal Interests</h3>
-              <div className="space-y-3">
+              <h3 className="text-2xl font-semibold text-foreground mb-8">Personal Interests</h3>
+              <div className="space-y-4">
                 {interests.map((interest, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-muted-foreground">{interest}</p>
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                    <p className="text-muted-foreground text-base leading-relaxed">{interest}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Current Focus */}
-            <div className="bg-secondary/30 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">Current Focus</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                I'm currently working on high-impact LLM projects at BOSCH, exploring advanced RAG techniques, 
-                and contributing to the open-source AI community. I'm particularly interested in making AI 
-                more accessible and inclusive for diverse applications.
+            <div className="bg-secondary/30 rounded-xl p-8">
+              <h3 className="text-xl font-semibold text-foreground mb-4">Current Focus</h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                I'm currently working on GenAI for Enterprise Applications at GoDaddy, building agentic AI-driven 
+                solutions and optimizing employee productivity through advanced LLM integrations. I'm passionate 
+                about deploying scalable AI solutions that drive tangible business outcomes.
               </p>
             </div>
           </div>
 
           {/* Right Column - Social Links & CTA */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* Social Links */}
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-6">Connect With Me</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <h3 className="text-2xl font-semibold text-foreground mb-8">Connect With Me</h3>
+              <div className="grid gap-6">
                 {socialLinks.map((link, index) => (
                   <a
                     key={index}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start space-x-4 p-4 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/50 transition-all group"
+                    className="flex items-start space-x-4 p-6 bg-background border border-border rounded-xl hover:shadow-lg hover:border-primary/50 transition-all group"
                   >
                     <div className="text-primary group-hover:text-primary/80 transition-colors">
                       {link.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
+                      <h4 className="font-medium text-foreground group-hover:text-primary transition-colors text-lg">
                         {link.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-muted-foreground">
                         {link.description}
                       </p>
                     </div>
                     <div className="text-muted-foreground group-hover:text-primary transition-colors">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </div>
@@ -169,16 +187,16 @@ export function Contact() {
             </div>
 
             {/* Collaboration CTA */}
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
+            <div className="bg-primary/5 border border-primary/20 rounded-xl p-8">
+              <h3 className="text-xl font-semibold text-foreground mb-4">
                 Let's Collaborate
               </h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
                 I'm open to research collaborations, consulting opportunities, speaking engagements, 
                 and mentoring. Whether you're interested in AI research, need guidance on NLP projects, 
                 or want to discuss the latest developments in LLMs, I'd love to hear from you.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="https://www.linkedin.com/in/shresthakamal"
                   target="_blank"
@@ -206,20 +224,20 @@ export function Contact() {
 
             {/* Quote */}
             <div className="text-center">
-              <blockquote className="text-lg italic text-muted-foreground">
+              <blockquote className="text-xl italic text-muted-foreground leading-relaxed">
                 "I'm enthusiastic about NLP's potential and eager to connect with others in the field."
               </blockquote>
-              <p className="text-sm text-muted-foreground mt-2">- Kamal Shrestha</p>
+              <p className="text-base text-muted-foreground mt-4">- Kamal Shrestha</p>
             </div>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground">
+        <div className="mt-20 pt-10 border-t border-border text-center">
+          <p className="text-muted-foreground text-lg">
             © 2024 Kamal Shrestha. Built with Next.js, TypeScript, and Tailwind CSS.
           </p>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-base text-muted-foreground mt-4">
             "Discipline Equals Freedom" - Living by this motto every day.
           </p>
         </div>

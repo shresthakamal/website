@@ -1,6 +1,28 @@
 "use client";
 
 export function Projects() {
+  // Function to render project image placeholder
+  const renderProjectImage = (projectType: string) => {
+    const imageConfig = {
+      thesis: { bg: "bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800", icon: "🎓" },
+      research: { bg: "bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800", icon: "🔬" },
+      academic: { bg: "bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800", icon: "📚" },
+      industry: { bg: "bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900 dark:to-orange-800", icon: "🏢" },
+      security: { bg: "bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-800", icon: "🔒" },
+    };
+    
+    const config = imageConfig[projectType as keyof typeof imageConfig] || imageConfig.academic;
+    
+    return (
+      <div className={`w-full h-48 rounded-xl ${config.bg} flex items-center justify-center`}>
+        <div className="text-center">
+          <div className="text-4xl mb-2">{config.icon}</div>
+          <div className="text-sm text-muted-foreground font-medium">Project Screenshot</div>
+        </div>
+      </div>
+    );
+  };
+
   const projects = [
     {
       title: "Inclusivity in Job Recommendation System",
@@ -14,7 +36,8 @@ export function Projects() {
         "Combined heuristic and learning-based approaches for inclusive job matching",
         "Focused on accessibility and fairness in recommendation systems",
         "Achieved significant improvements in recommendation quality for underrepresented groups"
-      ]
+      ],
+      imageType: "thesis"
     },
     {
       title: "Hostility Detection in Hindi-English Code-Mixed Conversations",
@@ -29,7 +52,8 @@ export function Projects() {
         "Novel approach to multilingual hostility detection",
         "Leveraged state-of-the-art multilingual pre-trained models"
       ],
-      publication: true
+      publication: true,
+      imageType: "research"
     },
     {
       title: "Federated Semi-Supervised Medical Image Classification",
@@ -43,7 +67,8 @@ export function Projects() {
         "Ranked in top 2% (A+) of the class",
         "Innovative approach to federated learning in healthcare",
         "Applied self-attention mechanisms for improved performance"
-      ]
+      ],
+      imageType: "academic"
     },
     {
       title: "Fuse Studio - Video Automation Tool",
@@ -56,7 +81,8 @@ export function Projects() {
         "Automated video generation from Google Slides presentations",
         "Integrated multiple state-of-the-art TTS models",
         "Streamlined content creation workflow for educational materials"
-      ]
+      ],
+      imageType: "industry"
     },
     {
       title: "Self Diagnosis - Computer-Aided Diagnosis (CAD)",
@@ -70,7 +96,8 @@ export function Projects() {
         "Multi-model approach for disease prediction",
         "Dynamic symptom analysis system",
         "Practical application of ML in healthcare"
-      ]
+      ],
+      imageType: "academic"
     },
     {
       title: "Zero Reference Low-Light Image Enhancement",
@@ -84,7 +111,8 @@ export function Projects() {
         "Zero-reference approach eliminating need for paired training data",
         "Applied attention mechanisms for improved enhancement quality",
         "Practical solution for low-light photography"
-      ]
+      ],
+      imageType: "academic"
     },
     {
       title: "Network Intrusion Detection System (NIDS)",
@@ -98,7 +126,8 @@ export function Projects() {
         "Comprehensive network security monitoring system",
         "Applied multiple ML algorithms for threat detection",
         "Real-time anomaly detection capabilities"
-      ]
+      ],
+      imageType: "security"
     },
     {
       title: "Secure Chat Communication with OpenSSL",
@@ -112,7 +141,8 @@ export function Projects() {
         "End-to-end encrypted communication system",
         "Demonstrated security vulnerabilities and countermeasures",
         "Practical application of cryptographic principles"
-      ]
+      ],
+      imageType: "security"
     }
   ];
 
@@ -140,26 +170,26 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Projects & Research
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A collection of research projects, academic work, and industry applications spanning AI, NLP, and computer security
           </p>
         </div>
 
         {/* Research Areas Overview */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">Research Areas</h3>
+        <div className="mb-20">
+          <h3 className="text-2xl font-semibold text-foreground mb-10 text-center">Research Areas</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {researchAreas.map((area, index) => (
-              <div key={index} className="bg-secondary/30 rounded-lg p-4 text-center">
-                <h4 className="font-semibold text-foreground mb-2">{area.area}</h4>
-                <p className="text-sm text-muted-foreground mb-3">{area.description}</p>
-                <div className="text-xs text-primary">
+              <div key={index} className="bg-secondary/30 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                <h4 className="font-semibold text-foreground mb-3 text-lg">{area.area}</h4>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{area.description}</p>
+                <div className="text-sm text-primary font-medium">
                   {area.projects.length} projects
                 </div>
               </div>
@@ -168,75 +198,85 @@ export function Projects() {
         </div>
 
         {/* Featured Projects */}
-        <div className="space-y-8">
+        <div className="space-y-12">
           {projects.map((project, index) => (
-            <div key={index} className="bg-background rounded-lg border border-border p-6 hover:shadow-lg transition-shadow">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-xl font-semibold text-foreground">
-                      {project.title}
-                    </h3>
-                    {project.publication && (
-                      <span className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
-                        Published
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-sm text-muted-foreground mb-2">
-                    <span className="font-medium text-primary">{project.category}</span>
-                    <span className="hidden sm:block">•</span>
-                    <span>{project.period}</span>
-                  </div>
-                  {project.supervisor && (
-                    <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">Supervisor:</span> {project.supervisor}
-                      {project.institution && <span> • {project.institution}</span>}
-                      {project.company && <span> • {project.company}</span>}
-                    </p>
-                  )}
+            <div key={index} className="bg-background rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-primary/20">
+              <div className="grid lg:grid-cols-3 gap-0">
+                {/* Project Image */}
+                <div className="lg:col-span-1">
+                  {renderProjectImage(project.imageType)}
                 </div>
-              </div>
+                
+                {/* Project Content */}
+                <div className="lg:col-span-2 p-8">
+                  <div className="flex flex-col h-full">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <h3 className="text-xl lg:text-2xl font-semibold text-foreground">
+                          {project.title}
+                        </h3>
+                        {project.publication && (
+                          <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                            Published
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-base text-muted-foreground mb-3">
+                        <span className="font-medium text-primary">{project.category}</span>
+                        <span className="hidden sm:block">•</span>
+                        <span>{project.period}</span>
+                      </div>
+                      {project.supervisor && (
+                        <p className="text-base text-muted-foreground mb-4">
+                          <span className="font-medium">Supervisor:</span> {project.supervisor}
+                          {project.institution && <span> • {project.institution}</span>}
+                          {project.company && <span> • {project.company}</span>}
+                        </p>
+                      )}
 
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {project.description}
-              </p>
+                      <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
+                        {project.description}
+                      </p>
 
-              {project.highlights && project.highlights.length > 0 && (
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-foreground mb-2">Key Highlights:</h4>
-                  <ul className="space-y-1">
-                    {project.highlights.map((highlight, hlIndex) => (
-                      <li key={hlIndex} className="flex items-start space-x-2 text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+                      {project.highlights && project.highlights.length > 0 && (
+                        <div className="mb-6">
+                          <h4 className="text-base font-semibold text-foreground mb-4">Key Highlights:</h4>
+                          <ul className="space-y-3">
+                            {project.highlights.map((highlight, hlIndex) => (
+                              <li key={hlIndex} className="flex items-start space-x-3 text-base text-muted-foreground">
+                                <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                                <span className="leading-relaxed">{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex flex-wrap gap-3 mt-4">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-4 py-2 bg-muted text-muted-foreground rounded-full text-sm font-medium hover:bg-primary/10 hover:text-primary transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              )}
-
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
               </div>
             </div>
           ))}
         </div>
 
         {/* Additional Projects Note */}
-        <div className="mt-12 text-center">
-          <div className="bg-secondary/20 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-2">
+        <div className="mt-20 text-center">
+          <div className="bg-secondary/20 rounded-xl p-8">
+            <h3 className="text-xl font-semibold text-foreground mb-4">
               Continuous Learning & Development
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-4xl mx-auto">
               Beyond these featured projects, I continuously work on exploring new technologies, 
               contributing to open-source projects, and staying updated with the latest developments 
               in AI and NLP. I maintain a weekly digest of LLM advancements and actively participate 

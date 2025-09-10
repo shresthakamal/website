@@ -1,22 +1,59 @@
 "use client";
 
 export function Experience() {
+  // Function to render company logo placeholder
+  const renderLogo = (logoType: string) => {
+    const logoConfig = {
+      godaddy: { bg: "bg-emerald-100 dark:bg-emerald-900", text: "text-emerald-600 dark:text-emerald-300", initial: "G" },
+      bosch: { bg: "bg-blue-100 dark:bg-blue-900", text: "text-blue-600 dark:text-blue-300", initial: "B" },
+      veritus: { bg: "bg-green-100 dark:bg-green-900", text: "text-green-600 dark:text-green-300", initial: "V" },
+      fusemachines: { bg: "bg-purple-100 dark:bg-purple-900", text: "text-purple-600 dark:text-purple-300", initial: "F" },
+      school: { bg: "bg-orange-100 dark:bg-orange-900", text: "text-orange-600 dark:text-orange-300", initial: "S" },
+      herald: { bg: "bg-red-100 dark:bg-red-900", text: "text-red-600 dark:text-red-300", initial: "H" },
+    };
+    
+    const config = logoConfig[logoType as keyof typeof logoConfig] || logoConfig.fusemachines;
+    
+    return (
+      <div className={`w-16 h-16 rounded-xl ${config.bg} flex items-center justify-center flex-shrink-0`}>
+        <span className={`text-2xl font-bold ${config.text}`}>{config.initial}</span>
+      </div>
+    );
+  };
+
   const experiences = [
     {
-      title: "Senior Applied Research Engineer",
-      company: "BOSCH Global Software Technology (BGSW)",
-      location: "Bengaluru, Karnataka, India",
-      period: "August 2023 - Present",
+      title: "Senior Machine Learning Engineer, GenAI for Enterprise Applications",
+      company: "GoDaddy Inc.",
+      location: "Remote, Bengaluru, India",
+      period: "January 2025 - Present",
       type: "Full-time",
-      description: "Working on high-impact projects leveraging Large Language Models (LLMs), both open-source and proprietary. Customizing production-generated datasets and introducing interactive agents to streamline workflows.",
+      description: "Working on employee productivity and business evaluation with available LLM SaaS to streamline repetitive workflows, configure automation and boost productivity. Building agentic AI-driven data service layer with centrally governed MCP gateway.",
       achievements: [
-        "Received Stand out Performer Award from NLP Cluster at RTC-IN @BOSCH (April 2024)",
-        "Panelist at The GenAI Summit by Inc24 @ JW Marriot Hotel, Bengaluru (April 2024)",
-        "Official contributor to Langgraph, specifically changes to agentic_rag (March 2024)",
-        "Received Bravo Award for completing first Generative AI PoC within 3 months",
-        "Received Shabash Bravo Award for excellent work (December 2023)"
+        "Aiming to reduce manual tracking of AI tool usage by 50%+ across employees",
+        "Building unified data service layer for enterprise applications (Microsoft, Atlassian, Slack, SNOW, GitHub)",
+        "Improving visibility into AI tool adoption across corporate functions",
+        "Promoting AI-first culture and assisting developers with productivity tools"
       ],
-      technologies: ["LLMs", "RAG", "Fine-tuning", "PyTorch", "Transformers", "Langchain"]
+      technologies: ["LLM SaaS", "ChatGPT", "M365 Copilot", "GitHub Copilot", "Claude Enterprise", "MCP Gateway", "Agentic AI"],
+      logo: "godaddy"
+    },
+    {
+      title: "Machine Learning Engineer",
+      company: "Research & Technology Center, BOSCH Global Software Technologies (BGSW)",
+      location: "Bengaluru, Karnataka, India",
+      period: "August 2023 - January 2025",
+      type: "Full-time",
+      description: "Led high-impact projects utilizing custom fine-tuned LLMs on 2TB+ of unstructured enterprise data to enable agentic collaboration and RAG for streamlined workflows, enhancing operational efficiency for 500+ users.",
+      achievements: [
+        "Received Bravo Award X3 for excellent rigor and engineering skills in GenAI use cases",
+        "Developed novel deep learning model for legal document classification achieving €10M annual savings",
+        "Led projects with custom fine-tuned LLMs on 2TB+ enterprise data for 500+ users",
+        "Pursued research on advanced document processing, Graph RAG, and multimodal approaches",
+        "Fine-tuned open-source models like Llama3 for custom enterprise data understanding"
+      ],
+      technologies: ["LLMs", "RAG", "Fine-tuning", "PyTorch", "Transformers", "Langchain", "Llama3", "Graph RAG"],
+      logo: "bosch"
     },
     {
       title: "Applied AI Consultant specializing in LLMs",
@@ -30,22 +67,25 @@ export function Experience() {
         "Developed custom fine-tune solutions for client requirements",
         "Guided strategic decisions for LLM deployment on Microsoft Azure"
       ],
-      technologies: ["LLMs", "RAG", "Microsoft Azure", "Fine-tuning", "Enterprise Solutions"]
+      technologies: ["LLMs", "RAG", "Microsoft Azure", "Fine-tuning", "Enterprise Solutions"],
+      logo: "veritus"
     },
     {
-      title: "Machine Learning Engineer Associate",
+      title: "Machine Learning Engineer and Curriculum Engineer",
       company: "Fusemachines",
       location: "Kathmandu, Nepal",
-      period: "February 2021 - December 2021",
+      period: "July 2020 - December 2021",
       type: "Full-time",
-      description: "Worked on client-based and in-house projects covering all stages of applied ML, DL, and NLP. Served as lead curriculum engineer for AI education programs.",
+      description: "Designed and developed Fuse Studio, an automated video generation platform. Worked as lead curriculum engineer and represented company as industry expert in teaching CS concepts.",
       achievements: [
-        "Designed fully automated Video and Text-to-Speech Generation System using Tacotron2, GlowTTs, and MelGAN",
-        "Remodeled Questions Answering and Difficulty Ranking Model with BERT and Ensemble models",
-        "Developed Content Recommendation System using Elastic Search, MongoDB, and FastAPI",
-        "Led curriculum engineering for Fusemachines AI Education Programs"
+        "Designed Fuse Studio - automated video generation platform reducing manual recording time by 75%",
+        "Awarded top impact project in in-house hackathon for Fuse Studio",
+        "Remodeled Question Answering and Difficulty Ranking Model with enhanced representations",
+        "Taught CS concepts to students at Q.I. Roberts Jr-Sr High School, Florida, USA",
+        "Led curriculum engineering for undergrad focused courses like DL and NLP"
       ],
-      technologies: ["BERT", "Tacotron2", "GlowTTs", "MelGAN", "FastAPI", "MongoDB", "Elastic Search"]
+      technologies: ["Tacotron2", "GlowTTs", "MelGAN", "BERT", "FastAPI", "MongoDB", "Elastic Search", "TTS"],
+      logo: "fusemachines"
     },
     {
       title: "Course Instructor - Introduction to Artificial Intelligence",
@@ -59,7 +99,8 @@ export function Experience() {
         "Taught 18 high school students in the US and 60 undergraduate students in Nepal",
         "Covered topics: AI fundamentals, Python programming, data structures, database management"
       ],
-      technologies: ["Python", "AI Fundamentals", "Data Structures", "Database Management"]
+      technologies: ["Python", "AI Fundamentals", "Data Structures", "Database Management"],
+      logo: "school"
     },
     {
       title: "Course Instructor - Computer Science in AI",
@@ -73,7 +114,8 @@ export function Experience() {
         "Covered Linux, networks, Python programming, scientific Python, and deployment",
         "Designed course materials for Software Development Lifecycle and Web Frameworks"
       ],
-      technologies: ["Python", "Linux", "Web Frameworks", "SQL", "NoSQL", "Scientific Python"]
+      technologies: ["Python", "Linux", "Web Frameworks", "SQL", "NoSQL", "Scientific Python"],
+      logo: "herald"
     },
     {
       title: "ML Engineer Associate Trainee",
@@ -87,66 +129,73 @@ export function Experience() {
         "Worked with ML lifecycle tools like Flask, Docker, Heroku, mlflow, Tensorboard",
         "Created interactive educational content for AI/ML programs"
       ],
-      technologies: ["Flask", "Docker", "Heroku", "MLflow", "Tensorboard", "Scikit-learn"]
+      technologies: ["Flask", "Docker", "Heroku", "MLflow", "Tensorboard", "Scikit-learn"],
+      logo: "fusemachines"
     }
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/20">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/20">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Professional Experience
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A journey through AI research, engineering, and education across multiple organizations and continents
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-12">
           {experiences.map((exp, index) => (
-            <div key={index} className="bg-background rounded-lg border border-border p-6 hover:shadow-lg transition-shadow">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground mb-1">
+            <div key={index} className="bg-background rounded-xl border border-border p-8 hover:shadow-xl transition-all duration-300 hover:border-primary/20">
+              <div className="flex flex-col lg:flex-row lg:items-start gap-6 mb-6">
+                {/* Company Logo */}
+                <div className="flex justify-center lg:justify-start">
+                  {renderLogo(exp.logo)}
+                </div>
+                
+                {/* Experience Details */}
+                <div className="flex-1 text-center lg:text-left">
+                  <h3 className="text-xl lg:text-2xl font-semibold text-foreground mb-2">
                     {exp.title}
                   </h3>
-                  <p className="text-primary font-medium mb-1">{exp.company}</p>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-sm text-muted-foreground">
+                  <p className="text-primary font-medium text-lg mb-3">{exp.company}</p>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center lg:justify-start sm:space-x-4 text-base text-muted-foreground mb-2">
                     <span>{exp.location}</span>
                     <span className="hidden sm:block">•</span>
                     <span>{exp.period}</span>
                     <span className="hidden sm:block">•</span>
-                    <span className="px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs">
+                    <span className="px-3 py-1 bg-accent text-accent-foreground rounded-full text-sm font-medium">
                       {exp.type}
                     </span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
                 {exp.description}
               </p>
 
               {exp.achievements && exp.achievements.length > 0 && (
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-foreground mb-2">Key Achievements:</h4>
-                  <ul className="space-y-1">
+                <div className="mb-6">
+                  <h4 className="text-base font-semibold text-foreground mb-4">Key Achievements:</h4>
+                  <ul className="space-y-3">
                     {exp.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex} className="flex items-start space-x-2 text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span>{achievement}</span>
+                      <li key={achIndex} className="flex items-start space-x-3 text-base text-muted-foreground">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                        <span className="leading-relaxed">{achievement}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {exp.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-xs font-medium"
+                    className="px-4 py-2 bg-muted text-muted-foreground rounded-full text-sm font-medium hover:bg-primary/10 hover:text-primary transition-colors"
                   >
                     {tech}
                   </span>
@@ -157,25 +206,49 @@ export function Experience() {
         </div>
 
         {/* Additional Experience Summary */}
-        <div className="mt-16 bg-background rounded-lg border border-border p-6">
-          <h3 className="text-xl font-semibold text-foreground mb-4">Additional Experience</h3>
-          <div className="grid md:grid-cols-2 gap-6 text-sm">
-            <div>
-              <h4 className="font-medium text-foreground mb-2">Leadership & Community</h4>
-              <ul className="space-y-1 text-muted-foreground">
-                <li>• ACM - IIT Hyderabad Student Chapter - ML Moderator (11 months)</li>
-                <li>• IT MEET v8.0 Documentation Lead and Marketing Representative</li>
-                <li>• Executive Board Member at Kathmandu University Computer Club</li>
-                <li>• Ambassador for Em-Blood Android Application with Nepal Red Cross</li>
+        <div className="mt-20 bg-background rounded-xl border border-border p-8">
+          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">Additional Experience</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground mb-4 text-lg">Leadership & Community</h4>
+              <ul className="space-y-3 text-base text-muted-foreground">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>ACM - IIT Hyderabad Student Chapter - ML Moderator (11 months)</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>IT MEET v8.0 Documentation Lead and Marketing Representative</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>Executive Board Member at Kathmandu University Computer Club</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>Ambassador for Em-Blood Android Application with Nepal Red Cross</span>
+                </li>
               </ul>
             </div>
-            <div>
-              <h4 className="font-medium text-foreground mb-2">Volunteer Work</h4>
-              <ul className="space-y-1 text-muted-foreground">
-                <li>• IT Meet Photography Contest Event Coordinator</li>
-                <li>• Medical Volunteer for Basketball Tournament with Nepal Red Cross</li>
-                <li>• Organized workshops and awareness campaigns</li>
-                <li>• Managed teams and secured funding for various initiatives</li>
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground mb-4 text-lg">Volunteer Work</h4>
+              <ul className="space-y-3 text-base text-muted-foreground">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>IT Meet Photography Contest Event Coordinator</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>Medical Volunteer for Basketball Tournament with Nepal Red Cross</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>Organized workshops and awareness campaigns</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                  <span>Managed teams and secured funding for various initiatives</span>
+                </li>
               </ul>
             </div>
           </div>

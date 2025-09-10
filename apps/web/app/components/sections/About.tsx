@@ -2,137 +2,180 @@
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             About Me
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A passionate AI researcher and engineer dedicated to advancing the field of Natural Language Processing
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Column - Main Bio */}
-          <div className="space-y-6">
-            <div className="prose prose-lg max-w-none">
-              <p className="text-muted-foreground leading-relaxed">
-                I am currently a <span className="text-foreground font-medium">Senior Applied Research Engineer</span> at 
-                BOSCH Global Software Technology (BGSW) at their Research and Technology Center (RTC) India, 
-                where I focus on high-impact projects leveraging Large Language Models (LLMs).
+        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start mb-16">
+          {/* Left Column - Profile Image */}
+          <div className="lg:col-span-1 flex justify-center">
+            <div className="relative">
+              <div className="w-72 h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg">
+                <div className="w-64 h-88 bg-muted/30 rounded-xl flex items-center justify-center">
+                  <svg className="w-24 h-24 text-muted-foreground/40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 9H14V4H5V21H19V9Z"/>
+                  </svg>
+                </div>
+              </div>
+              <div className="absolute -top-3 -right-3 w-6 h-6 bg-primary/30 rounded-full animate-pulse"></div>
+              <div className="absolute -bottom-3 -left-3 w-8 h-8 bg-primary/20 rounded-full animate-pulse delay-700"></div>
+            </div>
+          </div>
+
+          {/* Right Column - Main Bio */}
+          <div className="lg:col-span-2 space-y-8">
+            <div className="prose prose-lg max-w-none space-y-6">
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                I am currently a <span className="text-foreground font-medium">Senior Machine Learning Engineer</span> at 
+                GoDaddy Inc., specializing in GenAI for Enterprise Applications. I focus on building agentic AI-driven 
+                solutions and optimizing employee productivity through advanced LLM integrations.
               </p>
               
-              <p className="text-muted-foreground leading-relaxed">
-                My expertise spans <span className="text-foreground font-medium">Artificial Intelligence</span>, 
-                <span className="text-foreground font-medium"> Natural Language Processing</span>, 
-                <span className="text-foreground font-medium"> Machine Learning</span>, and 
-                <span className="text-foreground font-medium"> Deep Learning</span>, with a particular 
-                specialization in Large Language Models.
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                My expertise spans <span className="text-foreground font-medium">Applied Natural Language Processing</span>, 
+                <span className="text-foreground font-medium"> End-to-End ML/DL Pipelines</span>, 
+                <span className="text-foreground font-medium"> LLM Fine-tuning</span>, and 
+                <span className="text-foreground font-medium"> Agentic AI Systems</span>. I specialize in deploying 
+                scalable solutions that drive tangible business outcomes.
               </p>
 
-              <p className="text-muted-foreground leading-relaxed">
-                I hold an <span className="text-foreground font-medium">M.Tech in Computer Engineering</span> from 
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                I hold an <span className="text-foreground font-medium">M.Tech in Computer Science and Engineering</span> from 
                 IIT Hyderabad with a CGPA of 9.06/10, where I developed a Hybrid Recommendation System 
-                for inclusive job recommendations. I'm passionate about making AI accessible and impactful 
-                for real-world applications.
+                for inclusive job recommendations. I'm passionate about bridging technical expertise with 
+                strategic business applications.
               </p>
             </div>
 
             {/* Personal Details */}
-            <div className="bg-secondary/50 rounded-lg p-6 space-y-4">
-              <h3 className="text-xl font-semibold text-foreground mb-4">Personal Details</h3>
-              <div className="grid sm:grid-cols-2 gap-4 text-sm">
+            <div className="bg-secondary/50 rounded-xl p-8 space-y-6">
+              <h3 className="text-xl font-semibold text-foreground mb-6">Personal Details</h3>
+              <div className="grid sm:grid-cols-2 gap-6 text-base">
                 <div>
                   <span className="text-muted-foreground">Location:</span>
-                  <span className="text-foreground ml-2">Bengaluru, Karnataka, India</span>
+                  <span className="text-foreground ml-2 font-medium">Bengaluru, Karnataka, India</span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">Philosophy:</span>
-                  <span className="text-foreground ml-2">"As pure as a CS student can be"</span>
+                  <span className="text-foreground ml-2 font-medium">"As pure as a CS student can be"</span>
                 </div>
                 <div className="sm:col-span-2">
                   <span className="text-muted-foreground">Hobbies:</span>
-                  <span className="text-foreground ml-2">Reading books, cooking new cuisines, traveling</span>
+                  <span className="text-foreground ml-2 font-medium">Reading books, cooking new cuisines, traveling</span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Right Column - Skills & Education */}
+        {/* Skills & Education Section */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Core Skills */}
           <div className="space-y-8">
-            {/* Core Skills */}
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">Core Expertise</h3>
-              <div className="space-y-3">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">Core Expertise</h3>
+              <div className="space-y-4">
                 {[
-                  { skill: "Large Language Models (LLMs)", level: "Expert" },
-                  { skill: "Natural Language Processing", level: "Expert" },
-                  { skill: "Machine Learning & Deep Learning", level: "Expert" },
-                  { skill: "Python & PyTorch", level: "Expert" },
-                  { skill: "Transformers & Langchain", level: "Advanced" },
-                  { skill: "RAG & Fine-tuning", level: "Advanced" },
+                  { skill: "Applied NLP & GenAI", level: "Expert" },
+                  { skill: "LLM Fine-tuning & Deployment", level: "Expert" },
+                  { skill: "End-to-End ML/DL Pipelines", level: "Expert" },
+                  { skill: "Python & PyTorch/Lightning", level: "Expert" },
+                  { skill: "Agentic AI & RAG Systems", level: "Expert" },
+                  { skill: "Enterprise AI Solutions", level: "Advanced" },
                 ].map((item, index) => (
-                  <div key={index} className="flex justify-between items-center">
-                    <span className="text-foreground font-medium">{item.skill}</span>
-                    <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                  <div key={index} className="flex justify-between items-center p-4 bg-background border border-border rounded-lg hover:shadow-md transition-shadow">
+                    <span className="text-foreground font-medium text-lg">{item.skill}</span>
+                    <span className="text-sm px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
                       {item.level}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Education Highlights */}
+          {/* Education Highlights */}
+          <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">Education</h3>
-              <div className="space-y-4">
-                <div className="border-l-2 border-primary pl-4">
-                  <h4 className="font-semibold text-foreground">M.Tech Computer Engineering</h4>
-                  <p className="text-sm text-muted-foreground">IIT Hyderabad • 2021-2023 • CGPA: 9.06/10</p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Thesis: "Inclusivity in Job Recommendation based on heuristic and learning approaches"
+              <h3 className="text-2xl font-semibold text-foreground mb-6">Education</h3>
+              <div className="space-y-6">
+                <div className="border-l-4 border-primary pl-6 bg-primary/5 p-6 rounded-r-lg">
+                  <h4 className="font-semibold text-foreground text-lg">M.Tech Computer Science and Engineering</h4>
+                  <p className="text-base text-muted-foreground mt-2">IIT Hyderabad • 2021-2023 • CGPA: 9.06/10</p>
+                  <p className="text-base text-muted-foreground mt-2">
+                    Thesis: "Inclusivity in Job Recommendation based on heuristic and learning approaches" (Patent Approved)
                   </p>
                 </div>
-                <div className="border-l-2 border-secondary pl-4">
-                  <h4 className="font-semibold text-foreground">B.E. Computer Engineering</h4>
-                  <p className="text-sm text-muted-foreground">Kathmandu University • 2016-2020 • 92.03%</p>
+                <div className="border-l-4 border-secondary pl-6 bg-secondary/5 p-6 rounded-r-lg">
+                  <h4 className="font-semibold text-foreground text-lg">B.E. Computer Engineering</h4>
+                  <p className="text-base text-muted-foreground mt-2">Kathmandu University • 2016-2020 • 92.30%</p>
                 </div>
-                <div className="border-l-2 border-accent pl-4">
-                  <h4 className="font-semibold text-foreground">Microdegree in ML & DL</h4>
-                  <p className="text-sm text-muted-foreground">Fusemachines AI School • 2019-2020 • Grade A</p>
+                <div className="border-l-4 border-accent pl-6 bg-accent/5 p-6 rounded-r-lg">
+                  <h4 className="font-semibold text-foreground text-lg">Microdegree in ML & DL</h4>
+                  <p className="text-base text-muted-foreground mt-2">Fusemachines AI School • 2019-2020 • Grade A</p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Recent Achievements */}
-            <div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">Recent Achievements</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-muted-foreground">
-                    <span className="text-foreground font-medium">Stand out Performer Award</span> from NLP Cluster at RTC-IN @BOSCH (April 2024)
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-muted-foreground">
-                    <span className="text-foreground font-medium">Panelist at GenAI Summit</span> by Inc24 @ JW Marriot Hotel, Bengaluru (April 2024)
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-muted-foreground">
-                    <span className="text-foreground font-medium">Official Contributor to Langgraph</span> - contributed to agentic_rag (March 2024)
-                  </p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-muted-foreground">
-                    <span className="text-foreground font-medium">Bravo Award</span> for completing first Generative AI PoC within 3 months
-                  </p>
-                </div>
+        {/* Recent Achievements */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">Recent Achievements</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  <span className="text-foreground font-medium">Senior ML Engineer at GoDaddy</span> - GenAI for Enterprise Applications (January 2025)
+                </p>
+              </div>
+            </div>
+            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  <span className="text-foreground font-medium">Bravo Award X3</span> at BOSCH for excellent engineering skills in GenAI use cases
+                </p>
+              </div>
+            </div>
+            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  <span className="text-foreground font-medium">€10M Annual Savings</span> - Legal document classification system at BOSCH
+                </p>
+              </div>
+            </div>
+            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  <span className="text-foreground font-medium">Patent Approved</span> - Job Recommendation System with inclusivity focus
+                </p>
+              </div>
+            </div>
+            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  <span className="text-foreground font-medium">AWS ML Specialty Certified</span> - Amazon Web Services certification
+                </p>
+              </div>
+            </div>
+            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  <span className="text-foreground font-medium">Top Impact Project</span> - Fuse Studio automated video generation platform
+                </p>
               </div>
             </div>
           </div>
