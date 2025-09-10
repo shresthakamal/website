@@ -196,7 +196,7 @@ export function Contact() {
         {/* Footer */}
         <div className="mt-20 pt-10 border-t border-border text-center">
           <p className="text-muted-foreground text-lg">
-            © 2024 Kamal Shrestha. Built with Next.js, TypeScript, and Tailwind CSS.
+            © 2024 Kamal Shrestha.
           </p>
           <p className="text-base text-muted-foreground mt-4">
             "Discipline Equals Freedom" - Living by this motto every day.
