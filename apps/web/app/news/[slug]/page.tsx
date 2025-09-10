@@ -221,12 +221,17 @@ export default async function NewsDetailPage({ params }: PageProps) {
 
 // Generate static params for better performance (optional)
 export async function generateStaticParams() {
-  const news = await prisma.news.findMany({
-    where: { published: true },
-    select: { slug: true },
-  });
+  try {
+    const news = await prisma.news.findMany({
+      where: { published: true },
+      select: { slug: true },
+    });
 
-  return news.map((item) => ({
-    slug: item.slug,
-  }));
+    return news.map((item) => ({
+      slug: item.slug,
+    }));
+  } catch (error) {
+    console.warn("Database connection failed during build, using empty params:", error);
+    return [];
+  }
 }
