@@ -36,3 +36,24 @@ model News {
 
   @@map("news")
 }
+
+model Experience {
+  id Int @id @default(autoincrement())
+  title String
+  company String
+  location String
+  period String
+  type String // Full-time, Part-time, Contract
+  description String @db.Text
+  achievements Json // Array of achievement strings
+  technologies Json // Array of technology strings
+  logoPath String?
+  logoType String?
+  startYear Int // Extracted from period for sorting
+  sortOrder Int @default(0) // Manual sort order
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([title, company])
+  @@map("experiences")
+}

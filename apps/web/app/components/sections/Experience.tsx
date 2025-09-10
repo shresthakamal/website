@@ -1,6 +1,12 @@
 "use client";
 
-export function Experience() {
+import { ExperienceData } from '../../actions/experiences';
+
+interface ExperienceProps {
+  experiences: ExperienceData[];
+}
+
+export function Experience({ experiences }: ExperienceProps) {
   // Function to render company logo for timeline
   const renderTimelineLogo = (logoPath?: string, logoType?: string, companyName?: string) => {
     if (logoPath) {
@@ -33,119 +39,7 @@ export function Experience() {
     );
   };
 
-  const experiences = [
-    {
-      title: "Senior Machine Learning Engineer, GenAI for Enterprise Applications",
-      company: "GoDaddy Inc.",
-      location: "Remote, Bengaluru, India",
-      period: "January 2025 - Present",
-      type: "Full-time",
-      description: "Working on employee productivity and business evaluation with available LLM SaaS to streamline repetitive workflows, configure automation and boost productivity. Building agentic AI-driven data service layer with centrally governed MCP gateway.",
-      achievements: [
-        "Aiming to reduce manual tracking of AI tool usage by 50%+ across employees",
-        "Building unified data service layer for enterprise applications (Microsoft, Atlassian, Slack, SNOW, GitHub)",
-        "Improving visibility into AI tool adoption across corporate functions",
-        "Promoting AI-first culture and assisting developers with productivity tools"
-      ],
-      technologies: ["LLM SaaS", "ChatGPT", "M365 Copilot", "GitHub Copilot", "Claude Enterprise", "MCP Gateway", "Agentic AI"],
-      logoType: "godaddy"
-    },
-    {
-      title: "Machine Learning Engineer",
-      company: "Research & Technology Center, BOSCH Global Software Technologies (BGSW)",
-      location: "Bengaluru, Karnataka, India",
-      period: "August 2023 - January 2025",
-      type: "Full-time",
-      description: "Led high-impact projects utilizing custom fine-tuned LLMs on 2TB+ of unstructured enterprise data to enable agentic collaboration and RAG for streamlined workflows, enhancing operational efficiency for 500+ users.",
-      achievements: [
-        "Received Bravo Award X3 for excellent rigor and engineering skills in GenAI use cases",
-        "Developed novel deep learning model for legal document classification achieving €10M annual savings",
-        "Led projects with custom fine-tuned LLMs on 2TB+ enterprise data for 500+ users",
-        "Pursued research on advanced document processing, Graph RAG, and multimodal approaches",
-        "Fine-tuned open-source models like Llama3 for custom enterprise data understanding"
-      ],
-      technologies: ["LLMs", "RAG", "Fine-tuning", "PyTorch", "Transformers", "Langchain", "Llama3", "Graph RAG"],
-      logoPath: "/assets/img/bosch/team.jpg",
-      logoType: "bosch"
-    },
-    {
-      title: "Applied AI Consultant specializing in LLMs",
-      company: "Veritus",
-      location: "Kobe, Hyogo, Japan",
-      period: "August 2024 - September 2024",
-      type: "Contract",
-      description: "Provided advisory support and guidance on strategic decision-making in LLM application development for Retrieval-Augmented Generation (RAG), fine-tuning LLM Models, deployment with Microsoft Azure.",
-      achievements: [
-        "Specialized in applying LLMs for enterprise-level RAG solutions",
-        "Developed custom fine-tune solutions for client requirements",
-        "Guided strategic decisions for LLM deployment on Microsoft Azure"
-      ],
-      technologies: ["LLMs", "RAG", "Microsoft Azure", "Fine-tuning", "Enterprise Solutions"],
-      logoType: "veritus"
-    },
-    {
-      title: "Machine Learning Engineer and Curriculum Engineer",
-      company: "Fusemachines",
-      location: "Kathmandu, Nepal",
-      period: "July 2020 - December 2021",
-      type: "Full-time",
-      description: "Designed and developed Fuse Studio, an automated video generation platform. Worked as lead curriculum engineer and represented company as industry expert in teaching CS concepts.",
-      achievements: [
-        "Designed Fuse Studio - automated video generation platform reducing manual recording time by 75%",
-        "Awarded top impact project in in-house hackathon for Fuse Studio",
-        "Remodeled Question Answering and Difficulty Ranking Model with enhanced representations",
-        "Taught CS concepts to students at Q.I. Roberts Jr-Sr High School, Florida, USA",
-        "Led curriculum engineering for undergrad focused courses like DL and NLP"
-      ],
-      technologies: ["Tacotron2", "GlowTTs", "MelGAN", "BERT", "FastAPI", "MongoDB", "Elastic Search", "TTS"],
-      logoType: "fusemachines"
-    },
-    {
-      title: "Course Instructor - Introduction to Artificial Intelligence",
-      company: "Q.I. Roberts Jr. - Sr. High School",
-      location: "Florida, United States",
-      period: "August 2021 - December 2021",
-      type: "Part-time",
-      description: "Designed and instructed daily lesson plans, coding sessions, and online lectures for 'Computer Science for AI' to high school students in the US and undergraduate students in Nepal.",
-      achievements: [
-        "Received overall rating of 4.65/5 from Nepal students and 4.35/5 from US students",
-        "Taught 18 high school students in the US and 60 undergraduate students in Nepal",
-        "Covered topics: AI fundamentals, Python programming, data structures, database management"
-      ],
-      technologies: ["Python", "AI Fundamentals", "Data Structures", "Database Management"],
-      logoType: "school"
-    },
-    {
-      title: "Course Instructor - Computer Science in AI",
-      company: "Herald College (Fuse AI Center)",
-      location: "Kathmandu, Nepal",
-      period: "July 2021 - November 2021",
-      type: "Part-time",
-      description: "Instructed foundational AI and Computer Science courses for bachelor-level students (B. IT 3rd Year).",
-      achievements: [
-        "Taught comprehensive curriculum covering AI fundamentals to web frameworks",
-        "Covered Linux, networks, Python programming, scientific Python, and deployment",
-        "Designed course materials for Software Development Lifecycle and Web Frameworks"
-      ],
-      technologies: ["Python", "Linux", "Web Frameworks", "SQL", "NoSQL", "Scientific Python"],
-      logoType: "herald"
-    },
-    {
-      title: "ML Engineer Associate Trainee",
-      company: "Fusemachines",
-      location: "Kathmandu, Nepal",
-      period: "July 2020 - February 2021",
-      type: "Full-time",
-      description: "Focused on writing interactive student-engaging materials on Deep Learning, Machine Learning, and Natural Language Processing.",
-      achievements: [
-        "Developed machine learning models for classification and regression on structured data",
-        "Worked with ML lifecycle tools like Flask, Docker, Heroku, mlflow, Tensorboard",
-        "Created interactive educational content for AI/ML programs"
-      ],
-      technologies: ["Flask", "Docker", "Heroku", "MLflow", "Tensorboard", "Scikit-learn"],
-      logoType: "fusemachines"
-    }
-  ];
+  // No longer need hardcoded data - using props from database
 
   // Extract year from period string
   const getStartYear = (period: string) => {
@@ -154,7 +48,7 @@ export function Experience() {
   };
 
   // Render experience content component
-  const renderExperienceContent = (exp: typeof experiences[0]) => (
+  const renderExperienceContent = (exp: ExperienceData) => (
     <div className="bg-background rounded-2xl border border-border p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/30 hover:scale-[1.02]">
       {/* Period Badge */}
       <div className="inline-flex items-center mb-4">
@@ -258,7 +152,7 @@ export function Experience() {
                       <div className="mb-1 md:mb-2 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
                         {year}
                       </div>
-                      {renderTimelineLogo(exp.logoPath, exp.logoType, exp.company)}
+                      {renderTimelineLogo(exp.logoPath || undefined, exp.logoType || undefined, exp.company)}
                     </div>
                   </div>
                   
