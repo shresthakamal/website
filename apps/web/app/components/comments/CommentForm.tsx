@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import { createComment, CreateCommentData } from '../../actions/comments';
+import { createComment, CreateCommentData, CommentData } from '../../actions/comments';
 
 interface CommentFormProps {
   blogSlug?: string;
   newsId?: number;
   parentId?: number;
-  onSuccess?: () => void;
+  onSuccess?: (comment: CommentData) => void;
   onCancel?: () => void;
   placeholder?: string;
   submitText?: string;
@@ -35,7 +35,7 @@ export default function CommentForm({
     const commentData: CreateCommentData = {
       content,
       authorName,
-      authorEmail,
+      authorEmail: authorEmail.trim() || undefined,
       blogSlug,
       newsId,
       parentId,
@@ -43,15 +43,15 @@ export default function CommentForm({
 
     startTransition(async () => {
       try {
-        await createComment(commentData);
+        const newComment = await createComment(commentData);
         
         // Reset form
         setContent('');
         setAuthorName('');
         setAuthorEmail('');
         
-        // Call success callback
-        onSuccess?.();
+        // Call success callback with the new comment
+        onSuccess?.(newComment);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to post comment');
       }
@@ -85,17 +85,16 @@ export default function CommentForm({
         
         <div>
           <label htmlFor="authorEmail" className="block text-sm font-medium text-foreground mb-1">
-            Email *
+            Email
           </label>
           <input
             type="email"
             id="authorEmail"
             value={authorEmail}
             onChange={(e) => setAuthorEmail(e.target.value)}
-            required
             disabled={isPending}
             className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50"
-            placeholder="your@email.com"
+            placeholder="your@email.com (optional)"
           />
           <p className="text-xs text-muted-foreground mt-1">
             Your email will not be published
@@ -122,7 +121,7 @@ export default function CommentForm({
       <div className="flex items-center gap-3">
         <button
           type="submit"
-          disabled={isPending || !content.trim() || !authorName.trim() || !authorEmail.trim()}
+          disabled={isPending || !content.trim() || !authorName.trim()}
           className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {isPending && (

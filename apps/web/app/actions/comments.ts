@@ -8,7 +8,7 @@ export interface CommentData {
   id: number;
   content: string;
   authorName: string;
-  authorEmail: string;
+  authorEmail: string | null;
   blogSlug: string | null;
   newsId: number | null;
   isApproved: boolean;
@@ -22,7 +22,7 @@ export interface CommentData {
 export interface CreateCommentData {
   content: string;
   authorName: string;
-  authorEmail: string;
+  authorEmail?: string;
   blogSlug?: string;
   newsId?: number;
   parentId?: number;
@@ -33,7 +33,7 @@ function transformComment(comment: {
   id: number;
   content: string;
   authorName: string;
-  authorEmail: string;
+  authorEmail: string | null;
   blogSlug: string | null;
   newsId: number | null;
   isApproved: boolean;
@@ -79,14 +79,12 @@ export async function createComment(data: CreateCommentData): Promise<CommentDat
     if (!data.authorName.trim()) {
       throw new Error('Author name cannot be empty');
     }
-    if (!data.authorEmail.trim()) {
-      throw new Error('Author email cannot be empty');
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.authorEmail)) {
-      throw new Error('Invalid email address');
+    // Email validation only if email is provided
+    if (data.authorEmail && data.authorEmail.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(data.authorEmail.trim())) {
+        throw new Error('Invalid email address');
+      }
     }
 
     // If replying to a comment, verify parent exists
@@ -110,20 +108,16 @@ export async function createComment(data: CreateCommentData): Promise<CommentDat
       data: {
         content: data.content.trim(),
         authorName: data.authorName.trim(),
-        authorEmail: data.authorEmail.trim().toLowerCase(),
+        authorEmail: data.authorEmail && data.authorEmail.trim() ? data.authorEmail.trim().toLowerCase() : null,
         blogSlug: data.blogSlug || null,
         newsId: data.newsId || null,
         parentId: data.parentId || null,
-        isApproved: false, // Comments need approval by default
+        // isApproved will use the database default (true)
       },
     });
 
-    // Revalidate the appropriate page
-    if (data.blogSlug) {
-      revalidatePath(`/blogs/${data.blogSlug}`);
-    } else if (data.newsId) {
-      revalidatePath(`/news/*`); // Revalidate all news pages to be safe
-    }
+    // Note: No revalidatePath here to prevent page refreshes
+    // Client-side optimistic updates will handle UI updates
 
     return transformComment(comment);
   } catch (error) {

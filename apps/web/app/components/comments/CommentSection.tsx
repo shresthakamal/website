@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useOptimistic } from 'react';
+import { useState } from 'react';
 import { CommentData, getBlogComments, getNewsComments, getBlogCommentCount, getNewsCommentCount } from '../../actions/comments';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
@@ -23,11 +23,7 @@ export default function CommentSection({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
-  // Optimistic updates for better UX
-  const [optimisticComments] = useOptimistic(
-    comments,
-    (state, newComment: CommentData) => [...state, newComment]
-  );
+  // No optimistic updates needed since comments are approved by default
 
   async function refreshComments() {
     setIsLoading(true);
@@ -59,9 +55,10 @@ export default function CommentSection({
     }
   }
 
-  function handleCommentSuccess() {
-    // Refresh comments after successful submission
-    refreshComments();
+  function handleCommentSuccess(newComment: CommentData) {
+    // Simply update the actual state and count - no optimistic updates needed
+    setComments(prev => [newComment, ...prev]);
+    setCommentCount(prev => prev + 1);
   }
 
   return (
@@ -130,7 +127,7 @@ export default function CommentSection({
       {/* Comments List */}
       {!isLoading && (
         <div className="space-y-6">
-          {optimisticComments.length === 0 ? (
+          {comments.length === 0 ? (
             <div className="text-center py-8">
               <div className="text-muted-foreground">
                 <svg className="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +138,7 @@ export default function CommentSection({
               </div>
             </div>
           ) : (
-            optimisticComments.map((comment) => (
+            comments.map((comment) => (
               <Comment
                 key={comment.id}
                 comment={comment}
@@ -155,7 +152,7 @@ export default function CommentSection({
       )}
 
       {/* Refresh Button */}
-      {!isLoading && optimisticComments.length > 0 && (
+      {!isLoading && comments.length > 0 && (
         <div className="mt-8 text-center">
           <button
             onClick={refreshComments}

@@ -57,7 +57,7 @@ model Comment {
   id          Int       @id @default(autoincrement())
   content     String
   authorName  String
-  authorEmail String
+  authorEmail String?
   blogSlug    String?
   newsId      Int?
   isApproved  Boolean   @default(true)
