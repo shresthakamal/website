@@ -75,33 +75,9 @@ export function About() {
           </div>
         </div>
 
-        {/* Skills & Education Section */}
+        {/* Education & Skills Section */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Core Skills */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-6">Core Expertise</h3>
-              <div className="space-y-4">
-                {[
-                  { skill: "Applied NLP & GenAI", level: "Expert" },
-                  { skill: "LLM Fine-tuning & Deployment", level: "Expert" },
-                  { skill: "End-to-End ML/DL Pipelines", level: "Expert" },
-                  { skill: "Python & PyTorch/Lightning", level: "Expert" },
-                  { skill: "Agentic AI & RAG Systems", level: "Expert" },
-                  { skill: "Enterprise AI Solutions", level: "Advanced" },
-                ].map((item, index) => (
-                  <div key={index} className="flex justify-between items-center p-4 bg-background border border-border rounded-lg hover:shadow-md transition-shadow">
-                    <span className="text-foreground font-medium text-lg">{item.skill}</span>
-                    <span className="text-sm px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
-                      {item.level}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Education Highlights */}
+          {/* Education Highlights - Left Side */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-semibold text-foreground mb-6">Education</h3>
@@ -121,6 +97,41 @@ export function About() {
                   <h4 className="font-semibold text-foreground text-lg">Microdegree in ML & DL</h4>
                   <p className="text-base text-muted-foreground mt-2">Fusemachines AI School • 2019-2020 • Grade A</p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Core Expertise - Right Side (Loading-state inspired) */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-semibold text-foreground mb-6">Core Expertise</h3>
+              
+              <div className="space-y-5">
+                {[
+                  { label: "Applied NLP & GenAI", pct: 96 },
+                  { label: "LLM Fine-tuning & Deployment", pct: 94 },
+                  { label: "End-to-End ML/DL Pipelines", pct: 92 },
+                  { label: "Python & PyTorch/Lightning", pct: 93 },
+                  { label: "Agentic AI & RAG Systems", pct: 91 },
+                  { label: "Enterprise AI Solutions", pct: 88 },
+                ].map((item, idx) => (
+                  <div key={idx} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm sm:text-base text-muted-foreground">{item.label}</span>
+                      <span className="text-xs text-muted-foreground">{item.pct}%</span>
+                    </div>
+
+
+                    <div className="h-2 w-full rounded-full bg-border/50 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-foreground/80"
+                        style={{ width: `${item.pct}%` }}
+                      />
+                    </div>
+
+
+                  </div>
+                ))}
               </div>
             </div>
           </div>

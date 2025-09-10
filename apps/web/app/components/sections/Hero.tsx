@@ -10,7 +10,7 @@ export function Hero() {
   }, []);
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-      <div className="max-w-8xl mx-[12%]">
+      <div className="max-w-8xl mx-[10%]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Profile Image */}
           <div className="flex justify-center lg:justify-end order-2 lg:order-1">
@@ -57,7 +57,7 @@ export function Hero() {
 
             {/* Motto */}
             <div className="py-6">
-              <blockquote className="text-lg sm:text-xl lg:text-2xl text-primary border-l-4 border-primary pl-6">
+              <blockquote className="text-lg sm:text-xl italic lg:text-2xl text-primary border-l-4 border-primary pl-6">
                 "Discipline Equals Freedom"
               </blockquote>
             </div>
