@@ -17,12 +17,12 @@ export function About() {
           {/* Left Column - Profile Image */}
           <div className="lg:col-span-1 flex justify-center">
             <div className="relative">
-              <div className="w-72 h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg">
-                <div className="w-64 h-88 bg-muted/30 rounded-xl flex items-center justify-center">
-                  <svg className="w-24 h-24 text-muted-foreground/40" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 9H14V4H5V21H19V9Z"/>
-                  </svg>
-                </div>
+              <div className="w-72 h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg overflow-hidden">
+                <img 
+                  src="/assets/img/about.jpg" 
+                  alt="Kamal Shrestha"
+                  className="w-64 h-88 rounded-xl object-cover"
+                />
               </div>
               <div className="absolute -top-3 -right-3 w-6 h-6 bg-primary/30 rounded-full animate-pulse"></div>
               <div className="absolute -bottom-3 -left-3 w-8 h-8 bg-primary/20 rounded-full animate-pulse delay-700"></div>

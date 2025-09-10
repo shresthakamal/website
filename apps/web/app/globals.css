@@ -59,4 +59,70 @@
   .font-mono {
     font-family: var(--font-jetbrains-mono), "JetBrains Mono", "Fira Code", Consolas, Monaco, monospace;
   }
+
+  /* Custom styles for markdown content */
+  .prose {
+    color: hsl(var(--foreground));
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    color: hsl(var(--foreground));
+  }
+
+  .prose strong {
+    color: hsl(var(--foreground));
+  }
+
+  .prose a {
+    color: hsl(var(--primary));
+  }
+
+  .prose a:hover {
+    color: hsl(var(--primary));
+    opacity: 0.8;
+  }
+
+  .prose code {
+    background-color: hsl(var(--muted));
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+
+  .prose pre {
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .prose blockquote {
+    border-left-color: hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+  }
+
+  .prose img {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .prose table {
+    border-collapse: collapse;
+  }
+
+  .prose th,
+  .prose td {
+    border: 1px solid hsl(var(--border));
+  }
+
+  .prose th {
+    background-color: hsl(var(--muted));
+  }
+
+  .prose hr {
+    border-color: hsl(var(--border));
+  }
 }

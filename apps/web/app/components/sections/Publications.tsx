@@ -1,22 +1,15 @@
 "use client";
 
 export function Publications() {
-  // Function to render publication image placeholder
-  const renderPublicationImage = (publicationType: string) => {
-    const imageConfig = {
-      conference: { bg: "bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800", icon: "📄" },
-      journal: { bg: "bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800", icon: "📖" },
-      article: { bg: "bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800", icon: "📝" },
-    };
-    
-    const config = imageConfig[publicationType as keyof typeof imageConfig] || imageConfig.article;
-    
+  // Function to render publication image
+  const renderPublicationImage = (imagePath: string, title: string) => {
     return (
-      <div className={`w-full h-40 rounded-xl ${config.bg} flex items-center justify-center`}>
-        <div className="text-center">
-          <div className="text-3xl mb-2">{config.icon}</div>
-          <div className="text-sm text-muted-foreground font-medium">Publication Preview</div>
-        </div>
+      <div className="w-full h-40 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800">
+        <img 
+          src={imagePath} 
+          alt={title}
+          className="w-full h-full object-cover"
+        />
       </div>
     );
   };
@@ -32,7 +25,7 @@ export function Publications() {
       keywords: ["Hostility Detection", "Code-Mixed Text", "Multilingual NLP", "Social Media Analysis"],
       doi: "10.1145/3501247.3531594",
       status: "Published",
-      imageType: "conference"
+      imagePath: "/assets/img/publication_preview/fake_news.png"
     },
     {
       title: "A Machine Learning Approach to Identify Fake News",
@@ -43,7 +36,7 @@ export function Publications() {
       abstract: "This paper presents a classification model using lexical and semantic features from news articles and sources to filter out fake content. Multiple algorithms including Naive Bayes, Support Vector Machine, Logistic Regression, and k-NN were evaluated, with k-NN and Logistic Regression yielding promising results.",
       keywords: ["Fake News Detection", "Machine Learning", "NLP", "Word Embeddings"],
       status: "Published",
-      imageType: "article"
+      imagePath: "/assets/img/publication_preview/clickbait.png"
     }
   ];
 
@@ -109,7 +102,7 @@ export function Publications() {
                 <div className="grid lg:grid-cols-4 gap-0">
                   {/* Publication Image */}
                   <div className="lg:col-span-1">
-                    {renderPublicationImage(pub.imageType)}
+                    {renderPublicationImage(pub.imagePath, pub.title)}
                   </div>
                   
                   {/* Publication Content */}

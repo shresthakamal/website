@@ -1,6 +1,7 @@
 import prisma from "@repo/db/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { markdownToHtml } from "../../lib/markdown";
 
 type NewsArticle = {
   id: number;
@@ -26,7 +27,7 @@ interface PageProps {
 }
 
 export default async function NewsDetailPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   // Fetch the current article
   const article: NewsArticle | null = await prisma.news.findFirst({
@@ -48,6 +49,11 @@ export default async function NewsDetailPage({ params }: PageProps) {
   if (!article) {
     notFound();
   }
+
+  // Convert markdown content to HTML
+  const contentHtml = await markdownToHtml(article.content);
+  const titleHtml = await markdownToHtml(article.title);
+  const excerptHtml = article.excerpt ? await markdownToHtml(article.excerpt) : null;
 
   // Fetch related/previous news (excluding current article)
   const relatedNews: RelatedNews[] = await prisma.news.findMany({
@@ -91,7 +97,9 @@ export default async function NewsDetailPage({ params }: PageProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </li>
-            <li className="text-foreground">{article.title}</li>
+            <li className="text-foreground">
+              <div dangerouslySetInnerHTML={{ __html: titleHtml }} />
+            </li>
           </ol>
         </nav>
 
@@ -112,20 +120,21 @@ export default async function NewsDetailPage({ params }: PageProps) {
             )}
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {article.title}
+            <div dangerouslySetInnerHTML={{ __html: titleHtml }} />
           </h1>
-          {article.excerpt && (
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              {article.excerpt}
-            </p>
+          {excerptHtml && (
+            <div className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              <div dangerouslySetInnerHTML={{ __html: excerptHtml }} />
+            </div>
           )}
         </header>
 
         {/* Article Content */}
-        <article className="prose prose-lg max-w-none mb-12">
-          <div className="text-foreground leading-relaxed whitespace-pre-wrap">
-            {article.content}
-          </div>
+        <article className="prose prose-lg max-w-none mb-12 dark:prose-invert">
+          <div 
+            className="text-foreground leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
         </article>
 
         {/* Related News */}

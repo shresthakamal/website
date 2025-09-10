@@ -1,8 +1,20 @@
 "use client";
 
 export function Experience() {
-  // Function to render company logo placeholder
-  const renderLogo = (logoType: string) => {
+  // Function to render company logo
+  const renderLogo = (logoPath?: string, logoType?: string, companyName?: string) => {
+    if (logoPath) {
+      return (
+        <div className="w-16 h-16 rounded-xl bg-background border border-border flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <img 
+            src={logoPath} 
+            alt={companyName || "Company logo"}
+            className="w-12 h-12 object-contain"
+          />
+        </div>
+      );
+    }
+
     const logoConfig = {
       godaddy: { bg: "bg-emerald-100 dark:bg-emerald-900", text: "text-emerald-600 dark:text-emerald-300", initial: "G" },
       bosch: { bg: "bg-blue-100 dark:bg-blue-900", text: "text-blue-600 dark:text-blue-300", initial: "B" },
@@ -36,7 +48,7 @@ export function Experience() {
         "Promoting AI-first culture and assisting developers with productivity tools"
       ],
       technologies: ["LLM SaaS", "ChatGPT", "M365 Copilot", "GitHub Copilot", "Claude Enterprise", "MCP Gateway", "Agentic AI"],
-      logo: "godaddy"
+      logoType: "godaddy"
     },
     {
       title: "Machine Learning Engineer",
@@ -53,7 +65,8 @@ export function Experience() {
         "Fine-tuned open-source models like Llama3 for custom enterprise data understanding"
       ],
       technologies: ["LLMs", "RAG", "Fine-tuning", "PyTorch", "Transformers", "Langchain", "Llama3", "Graph RAG"],
-      logo: "bosch"
+      logoPath: "/assets/img/bosch/team.jpg",
+      logoType: "bosch"
     },
     {
       title: "Applied AI Consultant specializing in LLMs",
@@ -68,7 +81,7 @@ export function Experience() {
         "Guided strategic decisions for LLM deployment on Microsoft Azure"
       ],
       technologies: ["LLMs", "RAG", "Microsoft Azure", "Fine-tuning", "Enterprise Solutions"],
-      logo: "veritus"
+      logoType: "veritus"
     },
     {
       title: "Machine Learning Engineer and Curriculum Engineer",
@@ -85,7 +98,7 @@ export function Experience() {
         "Led curriculum engineering for undergrad focused courses like DL and NLP"
       ],
       technologies: ["Tacotron2", "GlowTTs", "MelGAN", "BERT", "FastAPI", "MongoDB", "Elastic Search", "TTS"],
-      logo: "fusemachines"
+      logoType: "fusemachines"
     },
     {
       title: "Course Instructor - Introduction to Artificial Intelligence",
@@ -100,7 +113,7 @@ export function Experience() {
         "Covered topics: AI fundamentals, Python programming, data structures, database management"
       ],
       technologies: ["Python", "AI Fundamentals", "Data Structures", "Database Management"],
-      logo: "school"
+      logoType: "school"
     },
     {
       title: "Course Instructor - Computer Science in AI",
@@ -115,7 +128,7 @@ export function Experience() {
         "Designed course materials for Software Development Lifecycle and Web Frameworks"
       ],
       technologies: ["Python", "Linux", "Web Frameworks", "SQL", "NoSQL", "Scientific Python"],
-      logo: "herald"
+      logoType: "herald"
     },
     {
       title: "ML Engineer Associate Trainee",
@@ -130,7 +143,7 @@ export function Experience() {
         "Created interactive educational content for AI/ML programs"
       ],
       technologies: ["Flask", "Docker", "Heroku", "MLflow", "Tensorboard", "Scikit-learn"],
-      logo: "fusemachines"
+      logoType: "fusemachines"
     }
   ];
 
@@ -152,7 +165,7 @@ export function Experience() {
               <div className="flex flex-col lg:flex-row lg:items-start gap-6 mb-6">
                 {/* Company Logo */}
                 <div className="flex justify-center lg:justify-start">
-                  {renderLogo(exp.logo)}
+                  {renderLogo(exp.logoPath, exp.logoType, exp.company)}
                 </div>
                 
                 {/* Experience Details */}

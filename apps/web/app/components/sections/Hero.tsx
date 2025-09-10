@@ -8,12 +8,12 @@ export function Hero() {
           {/* Left Column - Profile Image */}
           <div className="flex justify-center lg:justify-end order-2 lg:order-1">
             <div className="relative">
-              <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px] rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-4 border-primary/10 flex items-center justify-center shadow-2xl">
-                <div className="w-72 h-72 sm:w-88 sm:h-88 lg:w-[380px] lg:h-[380px] rounded-full bg-muted/30 flex items-center justify-center">
-                  <svg className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 text-muted-foreground/40" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                  </svg>
-                </div>
+              <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px] rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-4 border-primary/10 flex items-center justify-center shadow-2xl overflow-hidden">
+                <img 
+                  src="/assets/img/prof_pic.jpg" 
+                  alt="Kamal Shrestha - AI Researcher and Engineer"
+                  className="w-72 h-72 sm:w-88 sm:h-88 lg:w-[380px] lg:h-[380px] rounded-full object-cover"
+                />
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full animate-pulse"></div>

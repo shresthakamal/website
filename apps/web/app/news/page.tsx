@@ -1,5 +1,6 @@
 import prisma from "@repo/db/client";
 import Link from "next/link";
+import { markdownToHtml } from "../lib/markdown";
 
 type NewsItem = {
   id: number;
@@ -11,7 +12,7 @@ type NewsItem = {
 };
 
 export default async function AllNewsPage() {
-  const allNews: NewsItem[] = await prisma.news.findMany({
+  const rawNews: NewsItem[] = await prisma.news.findMany({
     where: { published: true },
     orderBy: { date: "desc" },
     select: { 
@@ -23,6 +24,15 @@ export default async function AllNewsPage() {
       featured: true 
     },
   });
+
+  // Process markdown for titles and excerpts
+  const allNews = await Promise.all(
+    rawNews.map(async (item) => ({
+      ...item,
+      titleHtml: await markdownToHtml(item.title),
+      excerptHtml: item.excerpt ? await markdownToHtml(item.excerpt) : null,
+    }))
+  );
 
   return (
     <main className="min-h-screen pt-20 pb-16">
@@ -80,13 +90,13 @@ export default async function AllNewsPage() {
                         href={`/news/${item.slug}`}
                         className="hover:text-primary transition-colors"
                       >
-                        {item.title}
+                        <div dangerouslySetInnerHTML={{ __html: item.titleHtml }} />
                       </Link>
                     </h2>
-                    {item.excerpt && (
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        {item.excerpt}
-                      </p>
+                    {item.excerptHtml && (
+                      <div className="text-muted-foreground leading-relaxed mb-4">
+                        <div dangerouslySetInnerHTML={{ __html: item.excerptHtml }} />
+                      </div>
                     )}
                     <Link 
                       href={`/news/${item.slug}`}
