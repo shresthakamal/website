@@ -1,16 +1,23 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 export function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-8xl mx-[12%]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Profile Image */}
           <div className="flex justify-center lg:justify-end order-2 lg:order-1">
             <div className="relative">
               <div className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[420px] lg:h-[420px] rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-4 border-primary/10 flex items-center justify-center shadow-2xl overflow-hidden">
                 <img 
-                  src="/assets/img/prof_pic.jpg" 
+                  src="/assets/img/about.jpg" 
                   alt="Kamal Shrestha - AI Researcher and Engineer"
                   className="w-72 h-72 sm:w-88 sm:h-88 lg:w-[380px] lg:h-[380px] rounded-full object-cover"
                 />
@@ -58,14 +65,16 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 lg:justify-start justify-center items-center">
               <button
-                onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => mounted && document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
                 className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-lg"
+                disabled={!mounted}
               >
                 Learn More
               </button>
               <button
-                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => mounted && document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="px-8 py-4 border border-border text-foreground rounded-lg font-medium hover:bg-accent transition-colors text-lg"
+                disabled={!mounted}
               >
                 Get in Touch
               </button>

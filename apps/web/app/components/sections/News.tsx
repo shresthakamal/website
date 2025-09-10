@@ -54,7 +54,7 @@ export async function News() {
               <li key={item.id} className="border-b border-border pb-6 last:border-b-0">
                 <div className="flex items-start gap-4">
                   <div className="mt-1 text-sm text-muted-foreground whitespace-nowrap">
-                    {new Intl.DateTimeFormat(undefined, {
+                    {new Intl.DateTimeFormat('en-US', {
                       year: "numeric",
                       month: "short",
                       day: "2-digit",

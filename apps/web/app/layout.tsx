@@ -58,7 +58,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-inter`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-inter`} suppressHydrationWarning>
         <Providers>
           <div className="min-h-screen bg-background text-foreground transition-colors">
             {children}

@@ -51,10 +51,6 @@ export function FontProvider({ children }: { children: React.ReactNode }) {
     setFontState(newFont);
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <FontContext.Provider value={{ font, setFont, mounted }}>
       {children}

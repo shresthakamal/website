@@ -22,6 +22,8 @@ export function Navigation() {
 
   // Track active section based on scroll position
   useEffect(() => {
+    if (!themeMounted) return; // Don't set up scroll listener until mounted
+
     const handleScroll = () => {
       const sections = navItems.map(item => item.href.substring(1)); // Remove # from href
       const scrollPosition = window.scrollY + 100; // Offset for header
@@ -42,9 +44,10 @@ export function Navigation() {
     handleScroll(); // Call once to set initial state
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [themeMounted]);
 
   const scrollToSection = (href: string) => {
+    if (!themeMounted) return;
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

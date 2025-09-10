@@ -35,7 +35,7 @@ export async function Blogs() {
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <time className="text-sm text-muted-foreground">
-                      {new Intl.DateTimeFormat(undefined, {
+                      {new Intl.DateTimeFormat('en-US', {
                         year: "numeric",
                         month: "short",
                         day: "2-digit",

@@ -80,7 +80,7 @@ export default async function AllNewsPage() {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <time className="text-sm text-muted-foreground">
-                        {new Intl.DateTimeFormat(undefined, {
+                        {new Intl.DateTimeFormat('en-US', {
                           year: "numeric",
                           month: "long",
                           day: "numeric",

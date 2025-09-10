@@ -62,7 +62,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <time className="text-sm text-muted-foreground">
-              {new Intl.DateTimeFormat(undefined, {
+              {new Intl.DateTimeFormat('en-US', {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -102,7 +102,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
               {relatedBlogs.map((blog) => (
                 <div key={blog.slug} className="flex items-start gap-4 p-4 bg-secondary/20 rounded-lg hover:bg-secondary/30 transition-colors">
                   <time className="text-sm text-muted-foreground whitespace-nowrap mt-1">
-                    {new Intl.DateTimeFormat(undefined, {
+                    {new Intl.DateTimeFormat('en-US', {
                       month: "short",
                       day: "2-digit",
                       year: "numeric",

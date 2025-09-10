@@ -4,8 +4,15 @@ import { useState, useEffect } from "react";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
         setIsVisible(true);
@@ -15,11 +22,13 @@ export function ScrollToTop() {
     };
 
     window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility(); // Call once to set initial state
 
     return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+  }, [mounted]);
 
   const scrollToTop = () => {
+    if (!mounted) return;
     window.scrollTo({
       top: 0,
       behavior: "smooth",

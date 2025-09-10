@@ -1,8 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function NotFound() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-md mx-auto text-center">
@@ -28,8 +34,9 @@ export default function NotFound() {
               Go Home
             </Link>
             <button
-              onClick={() => window.history.back()}
+              onClick={() => mounted && window.history.back()}
               className="px-6 py-3 border border-border text-foreground rounded-lg font-medium hover:bg-accent transition-colors"
+              disabled={!mounted}
             >
               Go Back
             </button>
