@@ -6,8 +6,14 @@ const getDatabaseUrl = () => {
     if (process.env.DATABASE_URL) {
         return process.env.DATABASE_URL;
     }
-    return process.env.DATABASE_URL_DEV;
-
+    
+    if (process.env.DATABASE_URL_DEV) {
+        return process.env.DATABASE_URL_DEV;
+    }
+    
+    // Fallback for build time when no database is available
+    // Use a dummy URL that won't cause connection errors during build
+    return "postgresql://dummy:dummy@localhost:5432/dummy";
 };
 
 const prismaClientSingleton = () => {
