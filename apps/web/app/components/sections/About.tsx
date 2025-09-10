@@ -17,9 +17,9 @@ export function About() {
           {/* Left Column - Profile Image */}
           <div className="lg:col-span-1 flex justify-center">
             <div className="relative">
-              <div className="w-72 h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg overflow-hidden">
+              <div className="w-72 h-96 bg-gradient-to-br from-primary/8 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg overflow-hidden">
                 <img 
-                  src="/assets/img/about.jpg" 
+                  src="/assets/img/about.jpeg" 
                   alt="Kamal Shrestha"
                   className="w-64 h-88 rounded-xl object-cover"
                 />
@@ -62,10 +62,10 @@ export function About() {
                   <span className="text-muted-foreground">Location:</span>
                   <span className="text-foreground ml-2 font-medium">Bengaluru, Karnataka, India</span>
                 </div>
-                <div>
+                {/* <div>
                   <span className="text-muted-foreground">Philosophy:</span>
                   <span className="text-foreground ml-2 font-medium">"As pure as a CS student can be"</span>
-                </div>
+                </div> */}
                 <div className="sm:col-span-2">
                   <span className="text-muted-foreground">Hobbies:</span>
                   <span className="text-foreground ml-2 font-medium">Reading books, cooking new cuisines, traveling</span>

@@ -57,7 +57,7 @@ export function Hero() {
 
             {/* Motto */}
             <div className="py-6">
-              <blockquote className="text-lg sm:text-xl lg:text-2xl italic text-primary border-l-4 border-primary pl-6">
+              <blockquote className="text-lg sm:text-xl lg:text-2xl text-primary border-l-4 border-primary pl-6">
                 "Discipline Equals Freedom"
               </blockquote>
             </div>
