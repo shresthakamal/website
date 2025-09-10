@@ -1,0 +1,93 @@
+import prisma from "@repo/db/client";
+import Link from "next/link";
+
+type NewsItem = {
+  id: number;
+  slug: string;
+  title: string;
+  excerpt: string | null;
+  date: Date;
+};
+
+export async function News() {
+  const items: NewsItem[] = await prisma.news.findMany({
+    where: { published: true },
+    orderBy: { date: "desc" },
+    take: 3,
+    select: { id: true, slug: true, title: true, excerpt: true, date: true },
+  });
+
+  return (
+    <section id="news" className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/10">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Latest News
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Recent highlights and updates
+          </p>
+        </div>
+
+        {items.length === 0 ? (
+          <div className="text-center text-muted-foreground">No news yet.</div>
+        ) : (
+          <ol className="space-y-6">
+            {items.map((item) => (
+              <li key={item.id} className="border-b border-border pb-6 last:border-b-0">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 text-sm text-muted-foreground whitespace-nowrap">
+                    {new Intl.DateTimeFormat(undefined, {
+                      year: "numeric",
+                      month: "short",
+                      day: "2-digit",
+                    }).format(new Date(item.date))}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">
+                      <Link 
+                        href={`/news/${item.slug}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {item.title}
+                      </Link>
+                    </h3>
+                    {item.excerpt && (
+                      <p className="text-muted-foreground mt-2 leading-relaxed">
+                        {item.excerpt}
+                      </p>
+                    )}
+                    <Link 
+                      href={`/news/${item.slug}`}
+                      className="inline-flex items-center text-sm text-primary hover:text-primary/80 font-medium mt-2 transition-colors"
+                    >
+                      Read more
+                      <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        {/* View All News Link */}
+        <div className="text-center mt-8">
+          <Link 
+            href="/news"
+            className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            View All News
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
