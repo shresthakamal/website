@@ -1,6 +1,7 @@
 import prisma from "@repo/db/client";
 import Link from "next/link";
 import { markdownToHtml } from "../../lib/markdown";
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
 
 type NewsItem = {
   id: number;
@@ -102,6 +103,9 @@ export async function News() {
             </svg>
           </Link>
         </div>
+
+        <SectionNavigationButton nextSection="#blogs" nextSectionName="Blogs" />
+
       </div>
     </section>
   );

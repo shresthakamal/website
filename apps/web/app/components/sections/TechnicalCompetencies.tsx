@@ -1,5 +1,7 @@
 "use client";
 
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
+
 export default function TechnicalCompetencies() {
   return (
     <section id="skills" className="min-h-screen flex items-center justify-center py-20 bg-background">
@@ -64,6 +66,9 @@ export default function TechnicalCompetencies() {
             </div>
           ))}
         </div>
+
+        <SectionNavigationButton nextSection="#news" nextSectionName="Latest News" />
+
       </div>
     </section>
   );

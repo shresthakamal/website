@@ -1,5 +1,6 @@
 import { getAllExperiences } from '../../actions/experiences';
 import { Experience } from './Experience';
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
 
 export async function ExperienceServer() {
   try {
@@ -26,6 +27,9 @@ export async function ExperienceServer() {
             </p>
           </div>
         </div>
+
+        <SectionNavigationButton nextSection="#projects" nextSectionName="Projects" />
+
       </section>
     );
   }

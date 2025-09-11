@@ -1,6 +1,7 @@
 "use client";
 
 import { ExperienceData } from '../../actions/experiences';
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
 
 interface ExperienceProps {
   experiences: ExperienceData[];
@@ -397,6 +398,8 @@ export function Experience({ experiences }: ExperienceProps) {
             </div>
           </div>
         </div>
+
+        <SectionNavigationButton nextSection="#projects" nextSectionName="Projects" />
 
       </div>
     </section>

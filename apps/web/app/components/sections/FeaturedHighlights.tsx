@@ -22,7 +22,7 @@ export default function FeaturedHighlights() {
       title: "Senior ML Engineer at GoDaddy",
       subtitle: "GenAI for Enterprise Applications",
       description: "Leading GenAI initiatives and enterprise AI solutions",
-      image: "/assets/img/godaddy.jpg",
+      image: "/assets/img/godaddy/joining.jpeg",
       category: "Career Achievement",
       link: "#"
     },
@@ -31,7 +31,7 @@ export default function FeaturedHighlights() {
       title: "Bravo Award X3",
       subtitle: "BOSCH Engineering Excellence",
       description: "Recognized for excellent engineering skills in GenAI use cases",
-      image: "/assets/img/bosch-award.jpg",
+      image: "/assets/img/bosch/team.jpg",
       category: "Awards",
       link: "#"
     },
@@ -40,7 +40,7 @@ export default function FeaturedHighlights() {
       title: "€10M Annual Savings",
       subtitle: "Legal Document Classification",
       description: "Developed AI system saving millions at BOSCH",
-      image: "/assets/img/legal-ai.jpg",
+      image: "/assets/img/bosch/5.jpeg",
       category: "Impact Project",
       link: "#"
     },
@@ -49,7 +49,7 @@ export default function FeaturedHighlights() {
       title: "Patent Approved",
       subtitle: "Job Recommendation System",
       description: "Patent for inclusivity-focused job recommendation system",
-      image: "/assets/img/patent.jpg",
+      image: "/assets/files/iith/semester-4/thesis/0.jpg",
       category: "Innovation",
       link: "#"
     },
@@ -58,7 +58,7 @@ export default function FeaturedHighlights() {
       title: "AWS ML Specialty Certified",
       subtitle: "Amazon Web Services",
       description: "Achieved AWS Machine Learning Specialty certification",
-      image: "/assets/img/aws-cert.jpg",
+      image: "/assets/img/aws/certification.jpeg",
       category: "Certification",
       link: "#"
     },
@@ -67,7 +67,7 @@ export default function FeaturedHighlights() {
       title: "Top Impact Project",
       subtitle: "Fuse Studio Platform",
       description: "Automated video generation platform with significant impact",
-      image: "/assets/img/fuse-studio.jpg",
+      image: "/assets/files/fuse/paper/clickbait/clickbait.jpg",
       category: "Innovation",
       link: "#"
     }
@@ -134,7 +134,7 @@ export default function FeaturedHighlights() {
             </svg>
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-80 sm:h-72 transition-all duration-500 ease-in-out mx-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 min-h-72 sm:h-64 lg:h-72 transition-all duration-500 ease-in-out mx-2">
             {/* Display cards based on screen size: 1 on mobile, 2 on tablet, 3 on desktop */}
             {[0, 1, 2].map((offset) => {
               const index = (currentSlide + offset) % highlights.length;
@@ -148,21 +148,21 @@ export default function FeaturedHighlights() {
                   key={`${highlight.id}-${currentSlide}`} 
                   className={`relative group overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl ${
                     offset === 0 ? '' : 
-                    offset === 1 ? 'hidden sm:block' : 
-                    'hidden lg:block'
+                    offset === 1 ? 'hidden lg:block' : 
+                    'hidden xl:block'
                   }`}
                 >
                   <div 
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                     style={{ backgroundImage: `url(${highlight.image})` }}
                   >
-                    <div className="absolute inset-0 bg-white sm:bg-white transition-opacity duration-300 group-hover:bg-white/50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/60"></div>
                   </div>
-                  <div className="relative h-full flex flex-col justify-end p-6 sm:p-5 text-black">
-                    <div className={`text-sm sm:text-xs mb-2 ${categoryColors[index % categoryColors.length]}`}>{highlight.category}</div>
-                    <h3 className="text-xl sm:text-lg font-bold mb-2">{highlight.title}</h3>
-                    <p className="text-sm sm:text-xs text-black/80 mb-3">{highlight.subtitle}</p>
-                    <button className="flex items-center text-sm text-black/80 hover:text-black transition-colors">
+                  <div className="relative h-full flex flex-col justify-end p-8 text-white">
+                    <div className={`text-sm font-semibold mb-3 uppercase tracking-wider ${categoryColors[index % categoryColors.length]}`}>{highlight.category}</div>
+                    <h3 className="text-2xl lg:text-3xl font-bold mb-3 leading-tight">{highlight.title}</h3>
+                    <p className="text-base text-white/90 mb-4 leading-relaxed">{highlight.subtitle}</p>
+                    <button className="flex items-center text-sm text-white/80 hover:text-white transition-colors font-medium">
                       VIEW DETAILS <span className="ml-2">↗</span>
                     </button>
                   </div>
@@ -172,7 +172,7 @@ export default function FeaturedHighlights() {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center mt-12 space-x-3">
+          <div className="flex justify-center mt-10 space-x-3">
             {highlights.map((_, index) => (
               <button
                 key={index}

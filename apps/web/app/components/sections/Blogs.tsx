@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllBlogPosts, BlogPost, markdownToHtml } from "../../lib/markdown";
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
 
 export async function Blogs() {
   const allPosts = getAllBlogPosts();
@@ -90,6 +91,9 @@ export async function Blogs() {
             </svg>
           </Link>
         </div>
+
+        <SectionNavigationButton nextSection="#experience" nextSectionName="Experience" />
+
       </div>
     </section>
   );

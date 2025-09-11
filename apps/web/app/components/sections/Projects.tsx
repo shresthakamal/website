@@ -1,5 +1,7 @@
 "use client";
 
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
+
 interface Project {
   title: string;
   category: string;
@@ -299,6 +301,9 @@ export function Projects() {
             </p>
           </div>
         </div>
+
+        <SectionNavigationButton nextSection="#publications" nextSectionName="Publications" />
+
       </div>
     </section>
   );

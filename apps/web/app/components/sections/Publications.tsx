@@ -1,5 +1,7 @@
 "use client";
 
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
+
 export function Publications() {
   // Function to render publication image
   const renderPublicationImage = (imagePath: string, title: string) => {
@@ -231,6 +233,9 @@ export function Publications() {
             </p>
           </div>
         </div>
+
+        <SectionNavigationButton nextSection="#contact" nextSectionName="Contact" />
+
       </div>
     </section>
   );
