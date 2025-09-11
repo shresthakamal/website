@@ -160,8 +160,8 @@ export default function FeaturedHighlights() {
                   </div>
                   <div className="relative h-full flex flex-col justify-end p-8 text-white">
                     <div className={`text-sm font-semibold mb-3 uppercase tracking-wider ${categoryColors[index % categoryColors.length]}`}>{highlight.category}</div>
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-3 leading-tight">{highlight.title}</h3>
-                    <p className="text-base text-white/90 mb-4 leading-relaxed">{highlight.subtitle}</p>
+                    <h3 className="text-base lg:text-lg font-bold leading-tight">{highlight.title}</h3>
+                    <p className="text-base text-white/90 mb-2 leading-relaxed">{highlight.subtitle}</p>
                     <button className="flex items-center text-sm text-white/80 hover:text-white transition-colors font-medium">
                       VIEW DETAILS <span className="ml-2">↗</span>
                     </button>
