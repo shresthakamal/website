@@ -187,7 +187,7 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative">
+    <section id="projects" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -287,7 +287,7 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Additional Projects Note */}
+        {/* Additional Projects Note
         <div className="mt-20 text-center">
           <div className="bg-secondary/20 rounded-xl p-8">
             <h3 className="text-xl font-semibold text-foreground mb-4">
@@ -300,11 +300,11 @@ export function Projects() {
               in the research community.
             </p>
           </div>
-        </div>
-
-        <SectionNavigationButton nextSection="#publications" nextSectionName="Publications" />
+        </div> */}
 
       </div>
+      
+      {/* <SectionNavigationButton nextSection="#publications" nextSectionName="Publications" /> */}
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { SectionNavigationButton } from "../ui/SectionNavigationButton";
 
 export default function TechnicalCompetencies() {
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center py-20 bg-background relative">
+    <section id="skills" className="relative min-h-screen flex items-center justify-center py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
@@ -91,9 +91,9 @@ export default function TechnicalCompetencies() {
           ))}
         </div>
 
-        <SectionNavigationButton nextSection="#news" nextSectionName="Latest News" />
-
       </div>
+      
+      <SectionNavigationButton nextSection="#news" nextSectionName="Latest News" />
     </section>
   );
 }

@@ -269,7 +269,7 @@ export function Experience({ experiences }: ExperienceProps) {
   );
 
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/20 relative min-h-screen">
+    <section id="experience" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-secondary/20">
       <div className="max-w-8xl mx-auto px-2 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -431,9 +431,9 @@ export function Experience({ experiences }: ExperienceProps) {
           </div>
         </div>
 
-        <SectionNavigationButton nextSection="#projects" nextSectionName="Projects" />
-
       </div>
+      
+      {/* <SectionNavigationButton nextSection="#projects" nextSectionName="Projects" /> */}
     </section>
   );
 }

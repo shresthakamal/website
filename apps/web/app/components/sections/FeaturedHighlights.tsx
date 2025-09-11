@@ -94,7 +94,7 @@ export default function FeaturedHighlights() {
 
   return (
     <div className="w-full px-6 py-8">
-      <div className="text-center mb-8">
+      <div className="text-center mb-16">
         <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
           Highlights
         </div>

@@ -36,7 +36,7 @@ export async function News() {
   );
 
   return (
-    <section id="news" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-secondary/10 relative">
+    <section id="news" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-secondary/10">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -104,9 +104,9 @@ export async function News() {
           </Link>
         </div>
 
-        <SectionNavigationButton nextSection="#blogs" nextSectionName="Blogs" />
-
       </div>
+      
+      <SectionNavigationButton nextSection="#blogs" nextSectionName="Blogs" />
     </section>
   );
 }

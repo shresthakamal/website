@@ -16,7 +16,7 @@ export async function Blogs() {
   );
 
   return (
-    <section id="blogs" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative">
+    <section id="blogs" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -92,9 +92,9 @@ export async function Blogs() {
           </Link>
         </div>
 
-        <SectionNavigationButton nextSection="#experience" nextSectionName="Experience" />
-
       </div>
+      
+      <SectionNavigationButton nextSection="#experience" nextSectionName="Experience" />
     </section>
   );
 }

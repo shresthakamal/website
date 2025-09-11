@@ -1,5 +1,7 @@
 "use client";
 
+import { SectionNavigationButton } from "../ui/SectionNavigationButton";
+
 export function Contact() {
   const contactInfo = [
     {
@@ -187,8 +189,6 @@ export function Contact() {
                 ))}
               </div>
             </div>
-
-
 
           </div>
         </div>

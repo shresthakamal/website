@@ -156,7 +156,7 @@ export function Hero() {
 
         {/* Stats Section */}
         <div className="mt-16 pt-12 border-t border-border/30">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {/* AI/ML/Data Science Experience */}
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">4+</div>
@@ -193,13 +193,13 @@ export function Hero() {
         </div>
 
         {/* Featured Highlights - Added below the main hero content */}
-        <div className="mt-8 pt-8">
+        <div className="mt-16 pt-8">
           <FeaturedHighlights />
         </div>
 
 
         </div>
-
+        
         <SectionNavigationButton nextSection="#about" nextSectionName="About Me" />
     </section>
   );

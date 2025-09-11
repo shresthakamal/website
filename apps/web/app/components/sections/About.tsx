@@ -4,7 +4,7 @@ import { SectionNavigationButton } from "../ui/SectionNavigationButton";
 
 export function About() {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 mt-16 relative">
+    <section id="about" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 mt-16">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -264,9 +264,9 @@ export function About() {
           </div>
         </div>
 
-        <SectionNavigationButton nextSection="#skills" nextSectionName="Technical Skills" />
-
       </div>
+      
+      <SectionNavigationButton nextSection="#skills" nextSectionName="Technical Skills" />
     </section>
   );
 }
