@@ -10,18 +10,50 @@ interface ExperienceProps {
 export function Experience({ experiences }: ExperienceProps) {
   // Function to render company logo for timeline
   const renderTimelineLogo = (logoPath?: string, logoType?: string, companyName?: string) => {
-    if (logoPath) {
+    // Map company names to image files
+    const getCompanyImagePath = (company?: string, logoType?: string) => {
+      if (logoPath) return logoPath;
+      
+      const companyLower = company?.toLowerCase() || '';
+      const logoTypeLower = logoType?.toLowerCase() || '';
+      
+      if (companyLower.includes('godaddy') || logoTypeLower.includes('godaddy')) {
+        return '/assets/img/experience/godaddy.png';
+      }
+      if (companyLower.includes('bosch') || logoTypeLower.includes('bosch')) {
+        return '/assets/img/experience/bosch.png';
+      }
+      if (companyLower.includes('fusemachines') || logoTypeLower.includes('fusemachines')) {
+        return '/assets/img/experience/fuse.png';
+      }
+      if (companyLower.includes('veritus') || logoTypeLower.includes('veritus')) {
+        return '/assets/img/experience/veritus.jpeg';
+      }
+      if (companyLower.includes('herald') || logoTypeLower.includes('herald')) {
+        return '/assets/img/experience/herald.png';
+      }
+      if (companyLower.includes('qiroberts') || logoTypeLower.includes('qiroberts')) {
+        return '/assets/img/experience/qiroberts.png';
+      }
+      
+      return null;
+    };
+
+    const imagePath = getCompanyImagePath(companyName, logoType);
+    
+    if (imagePath) {
       return (
-        <div className="w-12 h-12 rounded-full bg-background border-2 border-primary flex items-center justify-center overflow-hidden shadow-lg">
+        <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-300">
           <img 
-            src={logoPath} 
+            src={imagePath} 
             alt={companyName || "Company logo"}
-            className="w-8 h-8 object-contain"
+            className="w-24 h-24 object-contain"
           />
         </div>
       );
     }
 
+    // Fallback to colored circles with initials if no image found
     const logoConfig = {
       godaddy: { bg: "bg-emerald-500", text: "text-white", initial: "G" },
       bosch: { bg: "bg-blue-500", text: "text-white", initial: "B" },
@@ -34,8 +66,8 @@ export function Experience({ experiences }: ExperienceProps) {
     const config = logoConfig[logoType as keyof typeof logoConfig] || logoConfig.fusemachines;
     
     return (
-      <div className={`w-12 h-12 rounded-full ${config.bg} flex items-center justify-center border-2 border-white shadow-lg`}>
-        <span className={`text-lg font-bold ${config.text}`}>{config.initial}</span>
+      <div className={`w-32 h-32 rounded-full ${config.bg} flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300`}>
+        <span className={`text-3xl font-bold ${config.text}`}>{config.initial}</span>
       </div>
     );
   };
@@ -237,7 +269,7 @@ export function Experience({ experiences }: ExperienceProps) {
   );
 
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/20">
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/20 relative min-h-screen">
       <div className="max-w-8xl mx-auto px-2 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -275,7 +307,7 @@ export function Experience({ experiences }: ExperienceProps) {
                   <div className="w-full flex">
                     {/* Mobile: All content on right side */}
                     <div className="w-full md:hidden">
-                      <div className="ml-16 sm:ml-20">
+                      <div className="ml-40">
                         {renderExperienceContent(exp)}
                       </div>
                     </div>
@@ -283,7 +315,7 @@ export function Experience({ experiences }: ExperienceProps) {
                     {/* Desktop: Alternating left/right */}
                     <div className="hidden md:flex w-full">
                       {/* Left Side Container */}
-                      <div className="w-1/2 pr-2 md:pr-3 lg:pr-4 xl:pr-6 flex justify-end">
+                      <div className="w-1/2 pr-8 md:pr-12 lg:pr-16 xl:pr-20 flex justify-end">
                         {isLeft && (
                           <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                             {renderExperienceContent(exp)}
@@ -292,7 +324,7 @@ export function Experience({ experiences }: ExperienceProps) {
                       </div>
                       
                       {/* Right Side Container */}
-                      <div className="w-1/2 pl-2 md:pl-3 lg:pl-4 xl:pl-6 flex justify-start">
+                      <div className="w-1/2 pl-8 md:pl-12 lg:pl-16 xl:pl-20 flex justify-start">
                         {!isLeft && (
                           <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                             {renderExperienceContent(exp)}
@@ -313,8 +345,8 @@ export function Experience({ experiences }: ExperienceProps) {
                   <div className="mb-1 md:mb-2 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
                     Various
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center border-2 border-white shadow-lg">
-                    <span className="text-lg font-bold text-white">L</span>
+                  <div className="w-32 h-32 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <span className="text-3xl font-bold text-white">L</span>
                   </div>
                 </div>
               </div>
@@ -323,7 +355,7 @@ export function Experience({ experiences }: ExperienceProps) {
               <div className="w-full flex">
                 {/* Mobile: All content on right side */}
                 <div className="w-full md:hidden">
-                  <div className="ml-16 sm:ml-20">
+                  <div className="ml-40">
                     {renderLeadershipCard()}
                   </div>
                 </div>
@@ -331,7 +363,7 @@ export function Experience({ experiences }: ExperienceProps) {
                 {/* Desktop: Left side (continuing alternating pattern) */}
                 <div className="hidden md:flex w-full">
                   {/* Left Side Container */}
-                  <div className="w-1/2 pr-2 md:pr-3 lg:pr-4 xl:pr-6 flex justify-end">
+                  <div className="w-1/2 pr-8 md:pr-12 lg:pr-16 xl:pr-20 flex justify-end">
                     {(experiences.length % 2 === 0) && (
                       <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                         {renderLeadershipCard()}
@@ -340,7 +372,7 @@ export function Experience({ experiences }: ExperienceProps) {
                   </div>
                   
                   {/* Right Side Container */}
-                  <div className="w-1/2 pl-2 md:pl-3 lg:pl-4 xl:pl-6 flex justify-start">
+                  <div className="w-1/2 pl-8 md:pl-12 lg:pl-16 xl:pl-20 flex justify-start">
                     {(experiences.length % 2 !== 0) && (
                       <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                         {renderLeadershipCard()}
@@ -359,8 +391,8 @@ export function Experience({ experiences }: ExperienceProps) {
                   <div className="mb-1 md:mb-2 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
                     Various
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center border-2 border-white shadow-lg">
-                    <span className="text-lg font-bold text-white">V</span>
+                  <div className="w-32 h-32 rounded-full bg-green-500 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <span className="text-3xl font-bold text-white">V</span>
                   </div>
                 </div>
               </div>
@@ -369,7 +401,7 @@ export function Experience({ experiences }: ExperienceProps) {
               <div className="w-full flex">
                 {/* Mobile: All content on right side */}
                 <div className="w-full md:hidden">
-                  <div className="ml-16 sm:ml-20">
+                  <div className="ml-40">
                     {renderVolunteerCard()}
                   </div>
                 </div>
@@ -377,7 +409,7 @@ export function Experience({ experiences }: ExperienceProps) {
                 {/* Desktop: Right side (continuing alternating pattern) */}
                 <div className="hidden md:flex w-full">
                   {/* Left Side Container */}
-                  <div className="w-1/2 pr-2 md:pr-3 lg:pr-4 xl:pr-6 flex justify-end">
+                  <div className="w-1/2 pr-8 md:pr-12 lg:pr-16 xl:pr-20 flex justify-end">
                     {((experiences.length + 1) % 2 === 0) && (
                       <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                         {renderVolunteerCard()}
@@ -386,7 +418,7 @@ export function Experience({ experiences }: ExperienceProps) {
                   </div>
                   
                   {/* Right Side Container */}
-                  <div className="w-1/2 pl-2 md:pl-3 lg:pl-4 xl:pl-6 flex justify-start">
+                  <div className="w-1/2 pl-8 md:pl-12 lg:pl-16 xl:pl-20 flex justify-start">
                     {((experiences.length + 1) % 2 !== 0) && (
                       <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                         {renderVolunteerCard()}

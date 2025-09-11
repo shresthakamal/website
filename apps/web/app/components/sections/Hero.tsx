@@ -154,7 +154,43 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Stats Section */}
+        <div className="mt-16 pt-12 border-t border-border/30">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl">
+            {/* AI/ML/Data Science Experience */}
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">4+</div>
+              <div className="text-sm lg:text-base text-muted-foreground font-medium">
+                AI/ML/DATA SCIENCE:
+              </div>
+              <div className="text-sm lg:text-base text-muted-foreground">
+                YEARS OF EXPERIENCE
+              </div>
+            </div>
 
+            {/* Industry Experience */}
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">3+</div>
+              <div className="text-sm lg:text-base text-muted-foreground font-medium">
+                INDUSTRY
+              </div>
+              <div className="text-sm lg:text-base text-muted-foreground">
+                YEARS OF EXPERIENCE
+              </div>
+            </div>
+
+            {/* Projects in Production */}
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">7+</div>
+              <div className="text-sm lg:text-base text-muted-foreground font-medium">
+                PROJECTS IN
+              </div>
+              <div className="text-sm lg:text-base text-muted-foreground">
+                PRODUCTION
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Featured Highlights - Added below the main hero content */}
         <div className="mt-8 pt-8">
@@ -162,11 +198,9 @@ export function Hero() {
         </div>
 
 
-        <div>
-          <SectionNavigationButton nextSection="#about" nextSectionName="About Me" />
         </div>
 
-        </div>
+        <SectionNavigationButton nextSection="#about" nextSectionName="About Me" />
     </section>
   );
 }

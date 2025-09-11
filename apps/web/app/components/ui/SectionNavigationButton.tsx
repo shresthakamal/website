@@ -11,7 +11,7 @@ export function SectionNavigationButton({ nextSection, nextSectionName }: Sectio
   };
 
   return (
-    <div className="flex justify-center mt-12">
+    <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
       <button
         onClick={handleClick}
         className="group flex items-center gap-3 px-8 py-4 bg-primary/10 hover:bg-primary/20 text-primary rounded-full font-medium transition-all duration-300 hover:scale-105 border border-primary/20 hover:border-primary/40"

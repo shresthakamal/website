@@ -16,7 +16,7 @@ export async function Blogs() {
   );
 
   return (
-    <section id="blogs" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+    <section id="blogs" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -80,7 +80,7 @@ export async function Blogs() {
         )}
 
         {/* View All Blogs Link */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 mb-24">
           <Link 
             href="/blogs"
             className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
