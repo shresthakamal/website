@@ -9,8 +9,14 @@ export function Hero() {
     setMounted(true);
   }, []);
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-      <div className="max-w-7xl mx-auto">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      {/* Soft Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/15 via-primary/8 to-transparent pointer-events-none" style={{
+        background: 'radial-gradient(ellipse at bottom left, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.08) 40%, transparent 70%)'
+      }}></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/12 via-transparent to-secondary/10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/8 via-transparent to-transparent pointer-events-none"></div>
+      <div className="relative max-w-7xl mx-auto z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center">
           {/* Right Column - Profile Image */}
           <div className="flex justify-center lg:justify-start order-2 lg:order-2">
