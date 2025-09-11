@@ -1,5 +1,6 @@
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
+import TechnicalCompetencies from "./components/sections/TechnicalCompetencies";
 import { ExperienceServer } from "./components/sections/ExperienceServer";
 import { News } from "./components/sections/News";
 import { Blogs } from "./components/sections/Blogs";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Navigation />
       <Hero />
       <About />
+      <TechnicalCompetencies />
       <News />
       <Blogs />
       <ExperienceServer />

@@ -3,7 +3,7 @@ import { getAllBlogPosts, BlogPost, markdownToHtml } from "../../lib/markdown";
 
 export async function Blogs() {
   const allPosts = getAllBlogPosts();
-  const rawItems: BlogPost[] = allPosts.slice(0, 3);
+  const rawItems: BlogPost[] = allPosts.slice(0, 6);
   
   // Process markdown for titles and excerpts
   const items = await Promise.all(
@@ -15,7 +15,7 @@ export async function Blogs() {
   );
 
   return (
-    <section id="blogs" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="blogs" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">

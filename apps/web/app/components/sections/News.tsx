@@ -17,7 +17,7 @@ export async function News() {
     rawItems = await prisma.news.findMany({
       where: { published: true },
       orderBy: { date: "desc" },
-      take: 3,
+      take: 5,
       select: { id: true, slug: true, title: true, excerpt: true, date: true },
     });
   } catch (error) {
@@ -35,7 +35,7 @@ export async function News() {
   );
 
   return (
-    <section id="news" className="py-24 px-4 sm:px-6 lg:px-8 bg-secondary/10">
+    <section id="news" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-secondary/10">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">

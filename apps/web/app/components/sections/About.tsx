@@ -2,7 +2,7 @@
 
 export function About() {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -17,11 +17,11 @@ export function About() {
           {/* Left Column - Profile Image */}
           <div className="lg:col-span-1 flex justify-center">
             <div className="relative">
-              <div className="w-72 h-96 bg-gradient-to-br from-primary/8 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg overflow-hidden">
+              <div className="w-72 h-[28rem] bg-gradient-to-br from-primary/8 to-primary/5 rounded-2xl border-2 border-primary/10 flex items-center justify-center shadow-lg overflow-hidden">
                 <img 
                   src="/assets/img/about.jpeg" 
                   alt="Kamal Shrestha"
-                  className="w-64 h-88 rounded-xl object-cover"
+                  className="w-64 h-[26rem] rounded-xl object-cover"
                 />
               </div>
               <div className="absolute -top-3 -right-3 w-6 h-6 bg-primary/30 rounded-full animate-pulse"></div>
@@ -77,24 +77,29 @@ export function About() {
 
         {/* Education Timeline Section */}
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold text-foreground mb-12 text-center">Educational Journey</h3>
+          <h3 className="text-2xl font-semibold text-foreground mb-12 text-center">My Education Journey</h3>
           
           {/* Horizontal Timeline */}
           <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen px-4 sm:px-6 lg:px-8">
             {/* Timeline Container */}
             <div className="relative">
               {/* Timeline Line - Full width connecting all nodes */}
-              <div className="absolute top-8 left-0 right-0 h-1 bg-gray-800 hidden md:block z-10 pointer-events-none"></div>
+              <div className="absolute top-8 left-8 right-8 h-1 bg-gray-600 hidden md:block z-10 pointer-events-none"></div>
               
               {/* Timeline Items */}
-              <div className="relative grid md:grid-cols-4 gap-6 md:gap-3 pt-10">
+              <div className="relative grid md:grid-cols-4 gap-6 md:gap-8 pt-4 px-4">
                 {/* St. Xavier's College - 2013-2015 (Oldest) */}
                 <div className="relative">
+                  {/* Year Label */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-sm font-bold text-gray-800 hidden md:block z-30 pointer-events-none">
+                    July 2013 - August 2015
+                  </div>
+                  
                   {/* Timeline Node - positioned on the line */}
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
                   
                   {/* Connector Line from node to card */}
-                  <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
                   
                   {/* Mobile Timeline Node */}
                   <div className="flex justify-center mb-4 md:hidden">
@@ -102,12 +107,8 @@ export function About() {
                   </div>
                   
                   {/* Card */}
-                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-16 md:mt-20 h-80 flex flex-col">
-                    <div className="text-center mb-3">
-                      <span className="px-3 py-1 bg-gray-800/10 text-gray-800 rounded-full text-xs font-semibold border border-gray-800/20">
-                        July 2013 - August 2015
-                      </span>
-                    </div>
+                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-10 md:mt-14 h-80 flex flex-col">
+ 
                     <h4 className="font-bold text-foreground text-base mb-2 text-center">Higher Secondary Education (+2)</h4>
                     <p className="text-sm text-muted-foreground text-center mb-2">St. Xavier's College, Maitighar</p>
                     <p className="text-xs text-muted-foreground text-center mb-2">Kathmandu, Nepal</p>
@@ -129,11 +130,16 @@ export function About() {
 
                 {/* B.E. - 2016-2020 */}
                 <div className="relative">
+                  {/* Year Label */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-sm font-bold text-gray-800 hidden md:block z-30 pointer-events-none">
+                    August 2016 - November 2020
+                  </div>
+                  
                   {/* Timeline Node - positioned on the line */}
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
                   
                   {/* Connector Line from node to card */}
-                  <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
                   
                   {/* Mobile Timeline Node */}
                   <div className="flex justify-center mb-4 md:hidden">
@@ -141,12 +147,8 @@ export function About() {
                   </div>
                   
                   {/* Card */}
-                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-16 md:mt-20 h-80 flex flex-col">
-                    <div className="text-center mb-3">
-                      <span className="px-3 py-1 bg-gray-800/10 text-gray-800 rounded-full text-xs font-semibold border border-gray-800/20">
-                        August 2016 - November 2020
-                      </span>
-                    </div>
+                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-10 md:mt-14 h-80 flex flex-col">
+       
                     <h4 className="font-bold text-foreground text-base mb-2 text-center">Bachelor in Computer Engineering</h4>
                     <p className="text-sm text-muted-foreground text-center mb-2">Kathmandu University (KU)</p>
                     <p className="text-xs text-muted-foreground text-center mb-2">Dhulikhel, Kavre, Nepal</p>
@@ -168,11 +170,16 @@ export function About() {
 
                 {/* Microdegree - 2019-2020 */}
                 <div className="relative">
+                  {/* Year Label */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-sm font-bold text-gray-800 hidden md:block z-30 pointer-events-none">
+                    September 2019 - May 2020
+                  </div>
+                  
                   {/* Timeline Node - positioned on the line */}
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
                   
                   {/* Connector Line from node to card */}
-                  <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
                   
                   {/* Mobile Timeline Node */}
                   <div className="flex justify-center mb-4 md:hidden">
@@ -180,12 +187,8 @@ export function About() {
                   </div>
                   
                   {/* Card */}
-                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-16 md:mt-20 h-80 flex flex-col">
-                    <div className="text-center mb-3">
-                      <span className="px-3 py-1 bg-gray-800/10 text-gray-800 rounded-full text-xs font-semibold border border-gray-800/20">
-                        September 2019 - May 2020
-                      </span>
-                    </div>
+                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-10 md:mt-14 h-80 flex flex-col">
+
                     <h4 className="font-bold text-foreground text-base mb-2 text-center">Microdegree in ML & DL</h4>
                     <p className="text-sm text-muted-foreground text-center mb-2">Fusemachines AI School</p>
                     <div className="text-center mb-3">
@@ -206,11 +209,16 @@ export function About() {
 
                 {/* M.Tech - 2021-2023 (Most Recent) */}
                 <div className="relative">
+                  {/* Year Label */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-sm font-bold text-gray-800 hidden md:block z-30 pointer-events-none">
+                    August 2021 - July 2023
+                  </div>
+                  
                   {/* Timeline Node - positioned on the line */}
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-800 rounded-full border-4 border-background shadow-lg z-30 pointer-events-none hidden md:block"></div>
                   
                   {/* Connector Line from node to card */}
-                  <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-gray-800 hidden md:block z-20 pointer-events-none"></div>
                   
                   {/* Mobile Timeline Node */}
                   <div className="flex justify-center mb-4 md:hidden">
@@ -218,12 +226,7 @@ export function About() {
                   </div>
                   
                   {/* Card */}
-                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-16 md:mt-20 h-80 flex flex-col">
-                    <div className="text-center mb-3">
-                      <span className="px-3 py-1 bg-gray-800/10 text-gray-800 rounded-full text-xs font-semibold border border-gray-800/20">
-                        August 2021 - July 2023
-                      </span>
-                    </div>
+                  <div className="bg-background rounded-2xl border border-border p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02] mt-10 md:mt-14 h-80 flex flex-col">
                     <h4 className="font-bold text-foreground text-base mb-2 text-center">M.Tech Computer Science & Engineering</h4>
                     <p className="text-sm text-muted-foreground text-center mb-2">Indian Institute of Technology, Hyderabad (IITH)</p>
                     <div className="text-center mb-3">
@@ -250,114 +253,6 @@ export function About() {
           </div>
         </div>
 
-        {/* Technical Competencies Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold text-foreground mb-12 text-center">Technical Competencies</h3>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { 
-                label: "Languages", 
-                icon: "📱",
-                technologies: ["Python", "C++", "C", "JavaScript", "MySQL", "HTML", "CSS", "MATLAB"]
-              },
-              { 
-                label: "Coding Methodologies", 
-                icon: "💻",
-                technologies: ["Test-Driven-Development", "Agile", "Clean Code", "Useful Comments", "Ability to adhere to ISO and other standards"]
-              },
-              { 
-                label: "Project Management", 
-                icon: "🔺",
-                technologies: ["SCRUM", "GitHub", "Jupyter Notebooks", "Presentation Skills", "Team Leadership/Management", "Cross-Team Communication", "Sense of Humor"]
-              },
-              { 
-                label: "Interests", 
-                icon: "📊",
-                technologies: ["Machine Learning", "Data Science", "Computer Vision", "Data Visualization", "Natural Language Processing", "Generative AI", "MLOps", "Software Engineering", "Software Development"]
-              },
-              { 
-                label: "Relevant Courses Taken", 
-                icon: "🌐",
-                technologies: ["Algorithm (CS 514)", "Machine Learning", "Deep Learning", "Natural Language Processing", "Operating Systems", "Artificial Intelligence", "Project Management", "Software Engineering", "Database Management System", "Big Ideas in AI", "AI Ethics", "Calculus I - III", "Discrete Structures"]
-              },
-              { 
-                label: "Frameworks", 
-                icon: "⚡",
-                technologies: ["NumPy", "Scikit-Learn", "TensorFlow", "Keras", "PyTorch", "Matplotlib", "OpenCV", "Pandas", "SciPy", "Hugging Face", "spaCy", "NLTK", "Langchain", "Django", "Flask", "FastAPI", "Streamlit"]
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-background rounded-2xl border border-border p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-800/30 hover:scale-[1.02]">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white text-xl mr-4">
-                    {item.icon}
-                  </div>
-                  <h4 className="font-semibold text-foreground text-lg">{item.label}</h4>
-                </div>
-                
-                {/* Technologies List */}
-                <div className="text-sm text-muted-foreground leading-relaxed">
-                  {item.technologies.join(", ")}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Recent Achievements */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">Recent Achievements</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  <span className="text-foreground font-medium">Senior ML Engineer at GoDaddy</span> - GenAI for Enterprise Applications (January 2025)
-                </p>
-              </div>
-            </div>
-            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  <span className="text-foreground font-medium">Bravo Award X3</span> at BOSCH for excellent engineering skills in GenAI use cases
-                </p>
-              </div>
-            </div>
-            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  <span className="text-foreground font-medium">€10M Annual Savings</span> - Legal document classification system at BOSCH
-                </p>
-              </div>
-            </div>
-            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  <span className="text-foreground font-medium">Patent Approved</span> - Job Recommendation System with inclusivity focus
-                </p>
-              </div>
-            </div>
-            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  <span className="text-foreground font-medium">AWS ML Specialty Certified</span> - Amazon Web Services certification
-                </p>
-              </div>
-            </div>
-            <div className="bg-background border border-border rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start space-x-4">
-                <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  <span className="text-foreground font-medium">Top Impact Project</span> - Fuse Studio automated video generation platform
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
